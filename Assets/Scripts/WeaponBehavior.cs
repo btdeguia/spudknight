@@ -9,6 +9,10 @@ public class WeaponBehavior : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private Transform anchor;
 
+
+    [SerializeField] private int damage;
+    [SerializeField] private float knockback;
+
     private bool activated = false;
 
     // Update is called once per frame
@@ -39,9 +43,8 @@ public class WeaponBehavior : MonoBehaviour
         float xpos = Mathf.Cos(Mathf.Deg2Rad * angle) * 1.25f;
         float ypos = Mathf.Sin(Mathf.Deg2Rad * angle) * 1.25f;
         transform.position = new Vector3(anchor.position.x + xpos, anchor.position.y + ypos, 0);
-
         // logic to rotate the weapon towards the target
-        // Debug.Log();
+        // Debug.Log(weapon_idle.transform.position);
         Vector3 difference = Camera.main.ScreenToWorldPoint(v3target) - anchor.position;
         difference.Normalize();
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
@@ -85,5 +88,13 @@ public class WeaponBehavior : MonoBehaviour
 
     public void Set_Active(bool isActive) {
         activated = isActive;
+    }
+
+    public float GetKnockback() {
+        return knockback;
+    }
+
+    public int GetDamage() {
+        return damage;
     }
 }

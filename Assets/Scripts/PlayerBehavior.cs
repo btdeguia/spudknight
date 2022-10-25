@@ -6,7 +6,9 @@ public class PlayerBehavior : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer sprite_renderer;
+    [SerializeField] private Rigidbody2D rigidbody_2d;
     [SerializeField] private float speed;
+    [SerializeField] private int health;
     private bool walking = false;
     private bool facing_back = false;
     private bool stunned;
@@ -68,16 +70,31 @@ public class PlayerBehavior : MonoBehaviour
         exit = false;
     }
 
-    public void OnCollisionEnter2D(Collision2D collision) {
-        if (!stunned) {
-            sprite_renderer.color /= 1.1f;
-            stunned = true;
-            StartCoroutine(hitstun());
+    private IEnumerator knockback(Collider2D collider) {
+        if (collider.transform.parent != null) {
+            Vector2 direction = collider.transform.parent.localPosition; // get local position of weapon
+            direction.x = direction.x + 1.25f; // normalize it (left = positive, right = negative)
+            float knockback = collider.transform.parent.GetComponent<WeaponBehavior>().GetKnockback(); // get knockback value from parent
+            rigidbody_2d.AddForce(direction * knockback * Time.smoothDeltaTime, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(0.25f);
+            rigidbody_2d.velocity = Vector2.zero;
         }
         
     }
 
-    public void OnCollisionExit2D(Collision2D collision) {
+    public void OnTriggerEnter2D(Collider2D collider) {
+        if (!stunned) {
+            health--; // player will always take 1 damage
+            sprite_renderer.color /= 1.1f;
+            
+            StartCoroutine(knockback(collider));
+            stunned = true;
+            StartCoroutine(hitstun()); 
+        }
+        
+    }
+
+    public void OnTriggerExit2D(Collider2D collider) {
         if (!exit) {
             sprite_renderer.color *= 1.1f;
             exit = true;

@@ -187,10 +187,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 7690077637660213471}
   sprite_renderer: {fileID: -7260284703256305485}
-  rigidbody: {fileID: 2668027554042229175}
+  rigidbody_2d: {fileID: 2668027554042229175}
   weapon_behavior: {fileID: 1696221928542974280}
   target: {fileID: 0}
   speed: 1
+  health: 2
   stunned: 0
 --- !u!95 &7690077637660213471
 Animator:
@@ -222,7 +223,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -294,7 +295,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 500
+  m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
