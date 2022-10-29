@@ -362,4 +362,5 @@ MonoBehaviour:
   target: {fileID: 0}
   anchor: {fileID: 0}
   damage: 1
+  distance: 1.25
   knockback: 200

@@ -11,7 +11,10 @@ public class WeaponBehavior : MonoBehaviour
 
 
     [SerializeField] private int damage;
+    [SerializeField] private float distance;
     [SerializeField] private float knockback;
+
+    [SerializeField] private bool is_enemy_weapon;
 
     private bool activated = false;
 
@@ -40,8 +43,8 @@ public class WeaponBehavior : MonoBehaviour
         if (angle < 0.0f) {
             angle += 360f;
         }
-        float xpos = Mathf.Cos(Mathf.Deg2Rad * angle) * 1.25f;
-        float ypos = Mathf.Sin(Mathf.Deg2Rad * angle) * 1.25f;
+        float xpos = Mathf.Cos(Mathf.Deg2Rad * angle) * distance;
+        float ypos = Mathf.Sin(Mathf.Deg2Rad * angle) * distance;
         transform.position = new Vector3(anchor.position.x + xpos, anchor.position.y + ypos, 0);
         // logic to rotate the weapon towards the target
         // Debug.Log(weapon_idle.transform.position);
@@ -96,5 +99,9 @@ public class WeaponBehavior : MonoBehaviour
 
     public int GetDamage() {
         return damage;
+    }
+
+    public bool IsEnemyWeapon() {
+        return is_enemy_weapon;
     }
 }

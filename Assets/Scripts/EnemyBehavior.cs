@@ -78,18 +78,22 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     public virtual void OnTriggerEnter2D(Collider2D collider) {
-        if (!stunned && collider.gameObject.name != "P_Player") {
+        if (!stunned && collider.gameObject.name != "P_Player" && collider.gameObject != weapon_behavior.gameObject && collider.gameObject.name[2] != 'E') {
             WeaponBehavior collider_weapon_behavior = collider.transform.parent.GetComponent<WeaponBehavior>();
-            if (collider_weapon_behavior != null) {
-                health -= collider_weapon_behavior.GetDamage();
-            } else {
+            if (collider_weapon_behavior != null) { // if is a weapon
+                if (!weapon_behavior.IsEnemyWeapon()) {
+                    health -= collider_weapon_behavior.GetDamage();
+                    StartCoroutine(Knockback(collider));
+                    sprite_renderer.color /= 1.1f;
+                    stunned = true;
+                    StartCoroutine(Hitstun()); 
+                }
+            } else { // else is not a weapon
                 health--;
+                sprite_renderer.color /= 1.1f;
+                stunned = true;
+                StartCoroutine(Hitstun()); 
             }
-            sprite_renderer.color /= 1.1f;
-            
-            StartCoroutine(Knockback(collider));
-            stunned = true;
-            StartCoroutine(Hitstun()); 
         }
         
     }

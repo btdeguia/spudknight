@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 4909756907209515177}
   - component: {fileID: 2668027554042229175}
   m_Layer: 0
-  m_Name: P_Basic
+  m_Name: P_E_Basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,7 +192,7 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 1
   health: 2
-  stunned: 0
+  distance_to_attack: 0
 --- !u!95 &7690077637660213471
 Animator:
   serializedVersion: 4
@@ -314,6 +314,10 @@ PrefabInstance:
       propertyPath: anchor
       value: 
       objectReference: {fileID: 1725813862246601456}
+    - target: {fileID: 1042839164979744800, guid: 50d493676562cf042bc10cd418e731de, type: 3}
+      propertyPath: is_enemy_weapon
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1874829896888714514, guid: 50d493676562cf042bc10cd418e731de, type: 3}
       propertyPath: m_RootOrder
       value: 1
