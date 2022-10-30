@@ -192,7 +192,8 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 1
   health: 2
-  distance_to_attack: 0
+  distance_to_attack: 3
+  attacking: 0
 --- !u!95 &7690077637660213471
 Animator:
   serializedVersion: 4

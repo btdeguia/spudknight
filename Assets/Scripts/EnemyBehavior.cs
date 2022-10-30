@@ -5,20 +5,20 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     [Header("Object Refs")]
-    [SerializeField] private Animator animator;
-    [SerializeField] private SpriteRenderer sprite_renderer;
-    [SerializeField] private Rigidbody2D rigidbody_2d;
-    [SerializeField] private WeaponBehavior weapon_behavior;
-    [SerializeField] private Transform target;
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected SpriteRenderer sprite_renderer;
+    [SerializeField] protected Rigidbody2D rigidbody_2d;
+    [SerializeField] protected WeaponBehavior weapon_behavior;
+    [SerializeField] protected Transform target;
     [Header("Enemy Settings")]
-    [SerializeField] private float speed;
-    [SerializeField] private int health;
-    [SerializeField] private int distance_to_attack;
+    [SerializeField] protected float speed;
+    [SerializeField] protected int health;
+    [SerializeField] protected int distance_to_attack;
 
-    private bool attacking = false;
-    private bool walking = false;
-    private bool stunned = false;
-    private bool exit = false;
+    [SerializeField] protected bool attacking = false;
+    protected bool walking = false;
+    protected bool stunned = false;
+    protected bool exit = false;
 
     void Start()
     {
@@ -28,6 +28,11 @@ public class EnemyBehavior : MonoBehaviour
     void Update()
     {
         Walk_Towards();
+    }
+
+    public virtual void Set_Attr(Transform target_transfr) {
+        target = target_transfr;
+        weapon_behavior.Set_Attr(target_transfr);
     }
 
     public virtual void Walk_Towards() {
@@ -61,9 +66,15 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     public virtual IEnumerator Hitstun() {
+        stunned = true;
         yield return new WaitForSeconds(0.5f);
         stunned = false;
         exit = false;
+    }
+
+    public virtual void Death() {
+        StopAllCoroutines();
+        Destroy(gameObject);
     }
 
     public virtual IEnumerator Knockback(Collider2D collider) {
@@ -78,25 +89,35 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     public virtual void OnTriggerEnter2D(Collider2D collider) {
+        // if:
+        // not collided with player
+        // not the weapon this object is holding
+        // not collided with another enemy
         if (!stunned && collider.gameObject.name != "P_Player" && collider.gameObject != weapon_behavior.gameObject && collider.gameObject.name[2] != 'E') {
             WeaponBehavior collider_weapon_behavior = collider.transform.parent.GetComponent<WeaponBehavior>();
             if (collider_weapon_behavior != null) { // if is a weapon
-                if (!weapon_behavior.IsEnemyWeapon()) {
+                if (weapon_behavior.IsEnemyWeapon()) {
                     health -= collider_weapon_behavior.GetDamage();
-                    StartCoroutine(Knockback(collider));
-                    sprite_renderer.color /= 1.1f;
-                    stunned = true;
-                    StartCoroutine(Hitstun()); 
+                    if (health > 0) {
+                        StartCoroutine(Knockback(collider));
+                        sprite_renderer.color /= 1.1f;
+                        StartCoroutine(Hitstun()); 
+                    }
+                    
                 }
-            } else { // else is not a weapon
+            } else { // else is not a weapon, probably contact damage
                 health--;
                 sprite_renderer.color /= 1.1f;
-                stunned = true;
                 StartCoroutine(Hitstun()); 
+            }
+            if (health <= 0) {
+                Death();
             }
         }
         
     }
+
+
 
     public virtual void OnTriggerExit2D(Collider2D collider) {
         if (!exit) {

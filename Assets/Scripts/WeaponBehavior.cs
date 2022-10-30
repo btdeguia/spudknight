@@ -25,6 +25,10 @@ public class WeaponBehavior : MonoBehaviour
         on_click();
     }
 
+    public void Set_Attr(Transform target_transfr) {
+        target = target_transfr;
+    }
+
     private void move_weapon() {
         Vector3 v3target = new Vector3();
         if (target != null) { // if there is a target (i.e. player) use that
