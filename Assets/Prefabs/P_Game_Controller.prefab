@@ -47,5 +47,5 @@ MonoBehaviour:
   basic_enemy: {fileID: 0}
   mHero: {fileID: 0}
   mRogue: {fileID: 3044979989761218993, guid: 7bbc15ba22bd3ab4da7c0830b75899df, type: 3}
-  mBrute: {fileID: 0}
+  mBrute: {fileID: 8523082902233824857, guid: b04a0b0f12bb6914887003fd1f279120, type: 3}
   mBasic: {fileID: 6577319643478984991, guid: 174a43aad17dbd141ad71bc046e7c8ac, type: 3}
