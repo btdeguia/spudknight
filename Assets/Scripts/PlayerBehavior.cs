@@ -158,6 +158,7 @@ public class PlayerBehavior : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D collider) {
+            Debug.Log("collided with " + collider.gameObject.name);
             if (collider.gameObject.name[2] == 'E') { // contact damage
                 if (parrying) {
                     collider.gameObject.GetComponent<EnemyBehavior>().Parried();

@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 10248621
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9ed4406e9b0dc5c4e9af92fff3f2a0d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -234,8 +234,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 10248621
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5fa585fb8c15d2046a9fe8685c9220a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -319,3 +319,4 @@ MonoBehaviour:
   held: 0
   ready: 0
   activated: 0
+  eneme_swing: 0

@@ -37,8 +37,10 @@ public class RogueEnemyBehavior : EnemyBehavior
 
     private IEnumerator rogue_dash() {
         float lerp_distance = 0;
+        Debug.Log("position of target: " + base.target.position);
         Vector3 dash_target = new Vector3(base.target.position.x, base.target.position.y, 0);
-        dash_target = dash_target * 1.5f;
+        Vector3 dash_overshoot = dash_target.normalized * 5f;
+        dash_target += dash_overshoot;
 
         base.animator.SetBool("is_dashing", true);
         transform.up = dash_target - transform.position;
