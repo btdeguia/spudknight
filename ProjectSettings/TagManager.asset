@@ -38,8 +38,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Backgrounds
+    uniqueID: 3733546985
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Guys
+    uniqueID: 2841572723
+    locked: 0
+  - name: Weapons
+    uniqueID: 10248621
     locked: 0
   - name: Hands
     uniqueID: 3065190541
