@@ -189,6 +189,7 @@ MonoBehaviour:
   animator: {fileID: 7353670544708685272}
   sprite_renderer: {fileID: 1147930165902356712}
   rigidbody_2d: {fileID: 2784727611933568119}
+  collider_2d: {fileID: 0}
   weapon_behavior: {fileID: 6372548936004841448}
   target: {fileID: 0}
   stun_effect: {fileID: 2541401368078176711}
@@ -393,6 +394,10 @@ PrefabInstance:
     - target: {fileID: 7590096421369157353, guid: 9a612c48d3819fa41a9544dfae2e5400, type: 3}
       propertyPath: m_Name
       value: P_Hammer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590096421369157353, guid: 9a612c48d3819fa41a9544dfae2e5400, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a612c48d3819fa41a9544dfae2e5400, type: 3}

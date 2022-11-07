@@ -189,11 +189,12 @@ MonoBehaviour:
   animator: {fileID: 7690077637660213471}
   sprite_renderer: {fileID: -7260284703256305485}
   rigidbody_2d: {fileID: 2668027554042229175}
+  collider_2d: {fileID: 4909756907209515177}
   weapon_behavior: {fileID: 1696221928542974280}
   target: {fileID: 0}
   stun_effect: {fileID: 9188838623112972472}
   speed: 1
-  health: 2
+  health: 700000
   distance_to_attack: 3
   attacking: 0
 --- !u!95 &7690077637660213471
@@ -226,7 +227,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -241,24 +242,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.37, y: -0.89}
-      - {x: -0.42, y: -0.9}
-      - {x: -0.48999998, y: -1}
-      - {x: -0.48999998, y: -1.11}
-      - {x: -0.48, y: -1.13}
-      - {x: -0.14999999, y: -1.13}
-      - {x: -0.14, y: -1.1}
-      - {x: -0.14, y: -0.97999996}
-      - {x: -0.21, y: -0.89}
-    - - {x: 0.11, y: -0.97999996}
-      - {x: 0.11, y: -1.12}
-      - {x: 0.12, y: -1.13}
-      - {x: 0.32, y: -1.13}
-      - {x: 0.47, y: -1.1}
-      - {x: 0.47, y: -0.93}
-      - {x: 0.45, y: -0.85999995}
-      - {x: 0.17, y: -0.85999995}
-      - {x: 0.12, y: -0.93}
+    - - {x: 0, y: 0}
+      - {x: 0, y: 0}
+      - {x: 0, y: 0}
+    - - {x: 0, y: 0}
+      - {x: 0, y: 0}
+      - {x: 0, y: 0}
     - - {x: 0.64, y: -0.44}
       - {x: 0.64, y: -0.28}
       - {x: 0.53999996, y: 0.21}
@@ -295,14 +284,14 @@ Rigidbody2D:
   m_GameObject: {fileID: 6577319643478984991}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -402,6 +391,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1725813862246601456}
     - target: {fileID: 1042839164979744800, guid: 50d493676562cf042bc10cd418e731de, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042839164979744800, guid: 50d493676562cf042bc10cd418e731de, type: 3}
       propertyPath: is_enemy_weapon
       value: 1
       objectReference: {fileID: 0}
@@ -456,6 +449,14 @@ PrefabInstance:
     - target: {fileID: 4801101531447809085, guid: 50d493676562cf042bc10cd418e731de, type: 3}
       propertyPath: m_Name
       value: P_Fork
+      objectReference: {fileID: 0}
+    - target: {fileID: 4801101531447809085, guid: 50d493676562cf042bc10cd418e731de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5695732004074126881, guid: 50d493676562cf042bc10cd418e731de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8719256236985774965, guid: 50d493676562cf042bc10cd418e731de, type: 3}
       propertyPath: m_RootOrder

@@ -8,6 +8,7 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer sprite_renderer;
     [SerializeField] private Rigidbody2D rigidbody_2d;
+    [SerializeField] private Collider2D collider_2d;
     [Header("Player Settings")]
     [SerializeField] private float speed;
     [SerializeField] private int health;
@@ -51,21 +52,32 @@ public class PlayerBehavior : MonoBehaviour
 
     private void walk() {
         walking = false;
-        if (Input.GetKey(KeyCode.W)) {
-            transform.Translate(0, speed * Time.deltaTime, 0);
+        // if (Input.GetKey(KeyCode.W)) {
+        //     transform.Translate(0, speed * Time.deltaTime, 0);
+        //     walking = true;
+        // }
+        // if (Input.GetKey(KeyCode.A)) {
+        //     transform.Translate(-speed * Time.deltaTime, 0, 0);
+        //     walking = true;
+        // }
+        // if (Input.GetKey(KeyCode.D)) {
+        //     transform.Translate(speed * Time.deltaTime, 0, 0);
+        //     walking = true;
+        // }
+        // if (Input.GetKey(KeyCode.S)) {
+        //     transform.Translate(0, -speed * Time.deltaTime, 0);
+        //     walking = true;
+        // }
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+            movement.Normalize();
+            rigidbody_2d.velocity =  movement * speed;
             walking = true;
         }
-        if (Input.GetKey(KeyCode.A)) {
-            transform.Translate(-speed * Time.deltaTime, 0, 0);
-            walking = true;
-        }
-        if (Input.GetKey(KeyCode.D)) {
-            transform.Translate(speed * Time.deltaTime, 0, 0);
-            walking = true;
-        }
-        if (Input.GetKey(KeyCode.S)) {
-            transform.Translate(0, -speed * Time.deltaTime, 0);
-            walking = true;
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D)) {
+            rigidbody_2d.velocity = Vector2.zero;
+            walking = false;
         }
         animator.SetBool("is_walking", walking);
     }
@@ -170,7 +182,7 @@ public class PlayerBehavior : MonoBehaviour
             }
             if (collider.transform.parent != null) {
                 WeaponBehavior weapon = collider.transform.parent.GetComponent<WeaponBehavior>();
-                if (weapon != null) {
+                if (weapon != null && weapon.IsEnemyWeapon()) {
                     if (parrying) {
                         Debug.Log("parried");
                         shield_renderer.sprite = shield_active;
@@ -197,12 +209,5 @@ public class PlayerBehavior : MonoBehaviour
             
             
         
-    }
-
-    public void OnTriggerExit2D(Collider2D collider) {
-        if (!exit) {
-            sprite_renderer.color *= 1.1f;
-            exit = true;
-        }
     }
 }

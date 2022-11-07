@@ -105,6 +105,7 @@ MonoBehaviour:
   animator: {fileID: 4302718359484361802}
   sprite_renderer: {fileID: 6804728738702056131}
   rigidbody_2d: {fileID: -806110090558751874}
+  collider_2d: {fileID: 0}
   weapon_behavior: {fileID: 4716512061676670883}
   target: {fileID: 0}
   stun_effect: {fileID: 9076102247350031935}
@@ -350,6 +351,10 @@ PrefabInstance:
     - target: {fileID: 4204917738856348058, guid: 04a06f3ba2194a542abbc638e12d48aa, type: 3}
       propertyPath: m_Name
       value: P_Knives
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204917738856348058, guid: 04a06f3ba2194a542abbc638e12d48aa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6505510643001052740, guid: 04a06f3ba2194a542abbc638e12d48aa, type: 3}
       propertyPath: anchor

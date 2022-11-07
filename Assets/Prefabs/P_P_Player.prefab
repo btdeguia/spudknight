@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 8633570857825234562}
   - component: {fileID: 1445225061525797431}
   m_Layer: 0
-  m_Name: P_Player
+  m_Name: P_P_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,6 +273,7 @@ MonoBehaviour:
   animator: {fileID: -5258909898911149823}
   sprite_renderer: {fileID: -1168390361093303223}
   rigidbody_2d: {fileID: 8633570857825234562}
+  collider_2d: {fileID: 1445225061525797431}
   speed: 2
   health: 0
   shield_transform: {fileID: 4445326857249220906}
@@ -335,7 +336,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

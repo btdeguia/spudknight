@@ -43,8 +43,9 @@ public class WeaponBehavior : MonoBehaviour
         on_click();
     }
 
-    public void Set_Attr(Transform target_transfr) {
+    public void Set_Attr(Transform target_transfr, Transform anchor_transfr) {
         target = target_transfr;
+        anchor = anchor_transfr;
     }
 
     private void move_weapon() {
@@ -179,5 +180,9 @@ public class WeaponBehavior : MonoBehaviour
 
     public bool IsEnemyWeapon() {
         return is_enemy_weapon;
+    }
+
+    public void SetEnemyWeapon() {
+        is_enemy_weapon = true;
     }
 }

@@ -8,6 +8,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] protected Animator animator;
     [SerializeField] protected SpriteRenderer sprite_renderer;
     [SerializeField] protected Rigidbody2D rigidbody_2d;
+    [SerializeField] protected Collider2D collider_2d;
     [SerializeField] protected WeaponBehavior weapon_behavior;
     [SerializeField] protected Transform target;
     [SerializeField] protected GameObject stun_effect;
@@ -21,6 +22,7 @@ public class EnemyBehavior : MonoBehaviour
     protected bool walking = false;
     protected bool stunned = false;
     protected bool exit = false;
+    protected bool knockback_active = false;
 
     void Start()
     {
@@ -34,8 +36,12 @@ public class EnemyBehavior : MonoBehaviour
 
     public virtual void Set_Attr(Transform target_transfr) {
         target = target_transfr;
-        weapon_behavior.Set_Attr(target_transfr);
+        weapon_behavior.Set_Attr(target_transfr, transform);
     }
+
+    public virtual Transform GetTarget() {
+        return target;
+    } 
 
     public virtual void Walk_Towards() {
         float distance_between = Vector3.Distance(transform.position, target.position);
@@ -44,11 +50,16 @@ public class EnemyBehavior : MonoBehaviour
                 animator.SetBool("is_walking", true);
                 walking = true;
             }
-            transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * speed);
+            // transform.position = Vector3.MoveTowards(transform.position, target.position, Time.deltaTime * speed);
+            Vector3 movement = (target.position - transform.position);
+            movement.Normalize();
+            rigidbody_2d.velocity =  movement * speed;
+            walking = true;
         } else {
             if (!attacking && !stunned) {
                 if (walking) {
                     animator.SetBool("is_walking", false);
+                    rigidbody_2d.velocity = Vector2.zero;
                     walking = false;
                 }
                 StartCoroutine(Attack());
@@ -80,14 +91,17 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     public virtual IEnumerator Knockback(Collider2D collider) {
-        if (collider.gameObject.name != "P_Player") {
-            Debug.Log("knockback applied");
+        if (collider.gameObject.name != "P_Player" && !knockback_active) {
+            knockback_active = true;
             Vector2 direction = collider.transform.parent.localPosition; // get local position of weapon
-            direction.x = direction.x + 1.25f; // normalize it (left = positive, right = negative)
+            // direction.Normalize(); // normalize it (left = positive, right = negative)
             float knockback = collider.transform.parent.GetComponent<WeaponBehavior>().GetKnockback(); // get knockback value from parent
             rigidbody_2d.AddForce(direction * knockback * Time.smoothDeltaTime, ForceMode2D.Impulse);
+            Vector3 dest = new Vector3(transform.position.x + direction.x, transform.position.y + direction.y, 0);
+            
             yield return new WaitForSeconds(0.25f);
             rigidbody_2d.velocity = Vector2.zero;
+            knockback_active = false;
         }
     }
 
@@ -96,6 +110,10 @@ public class EnemyBehavior : MonoBehaviour
         // not collided with player
         // not the weapon this object is holding
         // not collided with another enemy
+        // if (collider.gameObject.name[2] != 'W') {
+        //     return;
+        //     // Physics2D.IgnoreCollision(collider_2d, collider.GetComponent<Collider>(), true);
+        // }
         if (collider.gameObject.name != "P_Player" && collider.gameObject != weapon_behavior.gameObject && collider.gameObject.name[2] != 'E') {
             Debug.Log(collider.gameObject.name + " collided with " + gameObject.name);
             WeaponBehavior collider_weapon_behavior = collider.transform.parent.GetComponent<WeaponBehavior>();
