@@ -194,7 +194,7 @@ MonoBehaviour:
   target: {fileID: 0}
   stun_effect: {fileID: 9188838623112972472}
   speed: 1
-  health: 700000
+  health: 15
   distance_to_attack: 3
   attacking: 0
 --- !u!95 &7690077637660213471
