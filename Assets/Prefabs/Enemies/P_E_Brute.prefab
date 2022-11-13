@@ -193,6 +193,7 @@ MonoBehaviour:
   weapon_behavior: {fileID: 6372548936004841448}
   target: {fileID: 0}
   stun_effect: {fileID: 2541401368078176711}
+  weapon_rig: {fileID: 0}
   speed: 0.5
   health: 20
   distance_to_attack: 3
@@ -397,7 +398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7590096421369157353, guid: 9a612c48d3819fa41a9544dfae2e5400, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a612c48d3819fa41a9544dfae2e5400, type: 3}

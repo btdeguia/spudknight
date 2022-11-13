@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class GameController : MonoBehaviour
+[Serializable]
+public struct Enemy {
+    public GameObject enemy_prefab;
+    public GameObject weapon_prefab;
+}
+
+public class GameController : Singleton<GameController>
 {
+    
+    [SerializeField] private List<Enemy> enemy_list = new List<Enemy>();
     // Everytime an enemy dies, make a new one
     [SerializeField] private GameObject mWeaponRig;
     [SerializeField] private GameObject mHero;
-    [SerializeField] private GameObject mRogue;
-    [SerializeField] private GameObject mBrute;
-    [SerializeField] private GameObject mBasic;
-    [SerializeField] private GameObject mKnives;
-    [SerializeField] private GameObject mHammer;
-    [SerializeField] private GameObject mFork;
     private GameObject hero;
     private GameObject rogue;
     private GameObject brute;
@@ -27,14 +30,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
         hero = GameObject.Find("P_P_Player");
-        enemies = new GameObject[3];
-        weapons = new GameObject[3];
-        enemies[0] = mBasic;
-        enemies[1] = mRogue;
-        enemies[2] = mBrute;
-        weapons[0] = mFork;
-        weapons[1] = mKnives;
-        weapons[2] = mHammer;
         // rogue = Instantiate(mRogue);
         // rogue.GetComponent<RogueEnemyBehavior>().Set_Attr(hero.transform);
 
@@ -49,18 +44,35 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemy == null) {
-            enemy = Instantiate(enemies[pos]);
-            EnemyBehavior enemy_behavior = enemy.GetComponent<EnemyBehavior>();
-            enemy_behavior.Set_Attr(hero.transform);
-            // GameObject weapon_rig = Instantiate(mWeaponRig);
-            // WeaponRigController controller = weapon_rig.GetComponent<WeaponRigController>();
-            // controller.Set_Attr(weapons[pos], enemy.transform, enemy_behavior, true);
-            pos++;
-            if (pos == enemies.Length) {
-                pos = 0;
-            }
-        }
+        // if (enemy == null) {
+        //     enemy = Instantiate(enemy_list[pos].enemy_prefab);
+        //     EnemyBehavior enemy_behavior = enemy.GetComponent<EnemyBehavior>();
+        //     enemy_behavior.SetTarget(hero.transform);
+        //     GameObject weapon_rig = Instantiate(mWeaponRig);
+        //     WeaponRigController controller = weapon_rig.GetComponent<WeaponRigController>();
+        //     controller.Set_Attr(enemy_list[pos].weapon_prefab, enemy.transform, enemy_behavior, true);
+        //     enemy_behavior.SetWeaponRig(controller);
+        //     pos++;
+        //     if (pos == enemy_list.Count) {
+        //         pos = 0;
+        //     }
+        // }
+    }
+
+    public GameObject GetWeaponFromList(int pos) {
+        return enemy_list[pos].weapon_prefab;
+    }
+
+    public GameObject GetEnemyFromList(int pos) {
+        return enemy_list[pos].enemy_prefab;
+    }
+
+    public Enemy GetEnemyStruct(int pos) {
+        return enemy_list[pos];
+    }
+
+    public GameObject GetHero() {
+        return hero;
     }
 
     // private IEnumerator SpawnBasic() {

@@ -43,8 +43,11 @@ public class WeaponBehavior : MonoBehaviour
         on_click();
     }
 
-    public void Set_Attr(Transform target_transfr, Transform anchor_transfr) {
+    public void SetTarget(Transform target_transfr) {
         target = target_transfr;
+    }
+
+    public void SetAnchor(Transform anchor_transfr) {
         anchor = anchor_transfr;
     }
 

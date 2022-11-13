@@ -13,15 +13,18 @@ public class WeaponRigController : MonoBehaviour
 
     void OnEnable() {
         if (weapon != null) {
-           GameObject weapon_inst = Instantiate(weapon);
+            GameObject weapon_inst = Instantiate(weapon);
             weapon_inst.transform.parent = transform;
             WeaponBehavior behavior = weapon_inst.transform.GetChild(0).GetComponent<WeaponBehavior>();
             if (behavior != null) {
                 if (is_enemy) {
-                    behavior.Set_Attr(enemy.GetTarget(), transform);
+                    behavior.SetTarget(enemy.GetTarget());
+                    behavior.SetAnchor(transform);
                     behavior.SetEnemyWeapon();
+                    enemy.SetWeapon(behavior);
                 } else {
-                    behavior.Set_Attr(null, transform);
+                    behavior.SetTarget(null);
+                    behavior.SetAnchor(transform);
                 }
                 
             } 
@@ -46,5 +49,14 @@ public class WeaponRigController : MonoBehaviour
         enemy = enemy_behavior;
         is_enemy = isEnemy;
         OnEnable();
+    }
+
+
+    public bool IsEnemy() {
+        return is_enemy;
+    }
+
+    public EnemyBehavior GetEnemyBehavior() {
+        return enemy;
     }
 }

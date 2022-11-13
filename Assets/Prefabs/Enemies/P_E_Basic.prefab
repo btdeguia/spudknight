@@ -193,9 +193,10 @@ MonoBehaviour:
   weapon_behavior: {fileID: 1696221928542974280}
   target: {fileID: 0}
   stun_effect: {fileID: 9188838623112972472}
+  weapon_rig: {fileID: 0}
   speed: 1
-  health: 15
-  distance_to_attack: 3
+  health: 3
+  distance_to_attack: 2.75
   attacking: 0
 --- !u!95 &7690077637660213471
 Animator:
@@ -452,7 +453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4801101531447809085, guid: 50d493676562cf042bc10cd418e731de, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5695732004074126881, guid: 50d493676562cf042bc10cd418e731de, type: 3}
       propertyPath: m_IsActive

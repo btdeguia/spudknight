@@ -7,8 +7,8 @@ public class RogueEnemyBehavior : EnemyBehavior
 
     [SerializeField] private Sprite default_sprite;
     [SerializeField] private Sprite dashing_sprite;
-    [SerializeField] private int distance_to_dash;
-    private int distance_to_attack_temp;
+    [SerializeField] private float distance_to_dash;
+    private float distance_to_attack_temp;
     private bool rogue_can_dash = true;
 
     void Start() {
@@ -36,23 +36,25 @@ public class RogueEnemyBehavior : EnemyBehavior
     }
 
     private IEnumerator rogue_dash() {
-        float lerp_distance = 0;
-        Debug.Log("position of target: " + base.target.position);
+        // float lerp_distance = 0;
         Vector3 dash_target = new Vector3(base.target.position.x, base.target.position.y, 0);
         Vector3 dash_overshoot = dash_target.normalized * 5f;
         dash_target += dash_overshoot;
 
         base.animator.SetBool("is_dashing", true);
+        base.rigidbody_2d.freezeRotation = false;
         transform.up = dash_target - transform.position;
+        base.rigidbody_2d.AddForce(transform.up * 20, ForceMode2D.Impulse);
 
-
-        for (int i = 0; i < 5; i++) {
-            transform.position = Vector3.Lerp(transform.position, dash_target, lerp_distance);
-            lerp_distance += 0.2f;
-            yield return new WaitForSeconds(0.05f);
-        }
-
+        // for (int i = 0; i < 5; i++) {
+        //     transform.position = Vector3.Lerp(transform.position, dash_target, lerp_distance);
+        //     lerp_distance += 0.2f;
+        //     yield return new WaitForSeconds(0.05f);
+        // }
+        yield return new WaitForSeconds(0.25f);
         base.animator.SetBool("is_dashing", false);
+        base.rigidbody_2d.velocity = Vector2.zero;
+        base.rigidbody_2d.freezeRotation = true;
         transform.rotation = new Quaternion(0, 0, 0, 0); 
 
         rogue_can_dash = false;

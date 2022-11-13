@@ -12,11 +12,12 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] protected WeaponBehavior weapon_behavior;
     [SerializeField] protected Transform target;
     [SerializeField] protected GameObject stun_effect;
+    [SerializeField] protected WeaponRigController weapon_rig;
 
     [Header("Enemy Settings")]
     [SerializeField] protected float speed;
     [SerializeField] protected int health;
-    [SerializeField] protected int distance_to_attack;
+    [SerializeField] protected float distance_to_attack;
 
     [SerializeField] protected bool attacking = false;
     protected bool walking = false;
@@ -34,14 +35,25 @@ public class EnemyBehavior : MonoBehaviour
         Walk_Towards();
     }
 
-    public virtual void Set_Attr(Transform target_transfr) {
+    public virtual void SetTarget(Transform target_transfr) {
         target = target_transfr;
-        weapon_behavior.Set_Attr(target_transfr, transform);
+    }
+
+    public virtual void SetAnchor() {
+        weapon_behavior.SetAnchor(transform);
+    }
+
+    public virtual void SetWeapon(WeaponBehavior weapon) {
+        weapon_behavior = weapon;
     }
 
     public virtual Transform GetTarget() {
         return target;
     } 
+
+    public virtual void SetWeaponRig(WeaponRigController rig) {
+        weapon_rig = rig;
+    }
 
     public virtual void Walk_Towards() {
         float distance_between = Vector3.Distance(transform.position, target.position);
@@ -87,6 +99,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public virtual void Death() {
         StopAllCoroutines();
+        Destroy(weapon_rig.gameObject);
         Destroy(gameObject);
     }
 

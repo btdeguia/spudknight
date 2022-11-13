@@ -44,8 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51091cac120502746943b6577f0719d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basic_enemy: {fileID: 0}
+  enemy_list:
+  - enemy_prefab: {fileID: 6577319643478984991, guid: 174a43aad17dbd141ad71bc046e7c8ac, type: 3}
+    weapon_prefab: {fileID: 4801101531447809085, guid: 50d493676562cf042bc10cd418e731de, type: 3}
+  - enemy_prefab: {fileID: 3044979989761218993, guid: 7bbc15ba22bd3ab4da7c0830b75899df, type: 3}
+    weapon_prefab: {fileID: 4204917738856348058, guid: 04a06f3ba2194a542abbc638e12d48aa, type: 3}
+  - enemy_prefab: {fileID: 8523082902233824857, guid: b04a0b0f12bb6914887003fd1f279120, type: 3}
+    weapon_prefab: {fileID: 7590096421369157353, guid: 9a612c48d3819fa41a9544dfae2e5400, type: 3}
+  mWeaponRig: {fileID: 0}
   mHero: {fileID: 0}
   mRogue: {fileID: 3044979989761218993, guid: 7bbc15ba22bd3ab4da7c0830b75899df, type: 3}
   mBrute: {fileID: 8523082902233824857, guid: b04a0b0f12bb6914887003fd1f279120, type: 3}
   mBasic: {fileID: 6577319643478984991, guid: 174a43aad17dbd141ad71bc046e7c8ac, type: 3}
+  mKnives: {fileID: 0}
+  mHammer: {fileID: 0}
+  mFork: {fileID: 0}

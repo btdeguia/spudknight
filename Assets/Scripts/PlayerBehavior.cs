@@ -128,7 +128,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private IEnumerator parry() {
         parrying = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         parrying = false;
     }
 
@@ -170,7 +170,7 @@ public class PlayerBehavior : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D collider) {
-            Debug.Log("collided with " + collider.gameObject.name);
+            Debug.Log("triggered with " + collider.gameObject.name);
             if (collider.gameObject.name[2] == 'E') { // contact damage
                 if (parrying) {
                     collider.gameObject.GetComponent<EnemyBehavior>().Parried();
@@ -188,9 +188,9 @@ public class PlayerBehavior : MonoBehaviour
                         shield_renderer.sprite = shield_active;
                         StartCoroutine(parry_cooldown());
                         if (weapon.transform.parent != null && weapon.transform.parent.parent != null) {
-                            EnemyBehavior enemy = weapon.transform.parent.parent.GetComponent<EnemyBehavior>();
-                            if (enemy != null) {
-                                enemy.Parried();
+                            WeaponRigController controller = weapon.transform.parent.parent.GetComponent<WeaponRigController>();
+                            if (controller != null && controller.IsEnemy()) {
+                                controller.GetEnemyBehavior().Parried();
                             }
                         } 
                     }
@@ -209,5 +209,14 @@ public class PlayerBehavior : MonoBehaviour
             
             
         
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision) {
+        Debug.Log("collided with " + collision.gameObject.name);
+        if (collision.gameObject.name[2] == 'E') {
+            Debug.Log("ignoring collision");
+            rigidbody_2d.velocity = Vector2.zero;
+            Physics2D.IgnoreCollision(collider_2d, collision.gameObject.GetComponent<Collider2D>());
+        }
     }
 }
