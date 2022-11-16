@@ -197,6 +197,7 @@ MonoBehaviour:
   speed: 0.5
   health: 20
   distance_to_attack: 3
+  reward_amount: 25
   attacking: 0
 --- !u!50 &2784727611933568119
 Rigidbody2D:

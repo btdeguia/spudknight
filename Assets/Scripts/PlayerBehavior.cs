@@ -9,6 +9,7 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private SpriteRenderer sprite_renderer;
     [SerializeField] private Rigidbody2D rigidbody_2d;
     [SerializeField] private Collider2D collider_2d;
+    [SerializeField] private WeaponRigController weapon_rig_controller;
     [Header("Player Settings")]
     [SerializeField] private float speed;
     [SerializeField] private int health;
@@ -218,5 +219,10 @@ public class PlayerBehavior : MonoBehaviour
             rigidbody_2d.velocity = Vector2.zero;
             Physics2D.IgnoreCollision(collider_2d, collision.gameObject.GetComponent<Collider2D>());
         }
+    }
+
+
+    public void Pickup_Weapon(GameObject weapon) {
+        weapon_rig_controller.AddWeapon(weapon);
     }
 }

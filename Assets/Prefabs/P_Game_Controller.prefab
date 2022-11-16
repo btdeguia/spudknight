@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5623018039261915993}
   - component: {fileID: 1845447994555236658}
+  - component: {fileID: 1932219694013232195}
   m_Layer: 0
   m_Name: P_Game_Controller
   m_TagString: Untagged
@@ -51,11 +52,17 @@ MonoBehaviour:
     weapon_prefab: {fileID: 4204917738856348058, guid: 04a06f3ba2194a542abbc638e12d48aa, type: 3}
   - enemy_prefab: {fileID: 8523082902233824857, guid: b04a0b0f12bb6914887003fd1f279120, type: 3}
     weapon_prefab: {fileID: 7590096421369157353, guid: 9a612c48d3819fa41a9544dfae2e5400, type: 3}
-  mWeaponRig: {fileID: 0}
+  mWeaponRig: {fileID: 8876301115303308783, guid: 848b46ba9889d5b46ba2e65ddf9ab2ec, type: 3}
   mHero: {fileID: 0}
-  mRogue: {fileID: 3044979989761218993, guid: 7bbc15ba22bd3ab4da7c0830b75899df, type: 3}
-  mBrute: {fileID: 8523082902233824857, guid: b04a0b0f12bb6914887003fd1f279120, type: 3}
-  mBasic: {fileID: 6577319643478984991, guid: 174a43aad17dbd141ad71bc046e7c8ac, type: 3}
-  mKnives: {fileID: 0}
-  mHammer: {fileID: 0}
-  mFork: {fileID: 0}
+--- !u!114 &1932219694013232195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860678208009201228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b3f5e727a866bc44b46a808fbdca0dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

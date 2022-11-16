@@ -197,6 +197,7 @@ MonoBehaviour:
   speed: 1
   health: 3
   distance_to_attack: 2.75
+  reward_amount: 5
   attacking: 0
 --- !u!95 &7690077637660213471
 Animator:

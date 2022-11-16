@@ -113,6 +113,7 @@ MonoBehaviour:
   speed: 3
   health: 10
   distance_to_attack: 1
+  reward_amount: 15
   attacking: 0
   default_sprite: {fileID: 21300000, guid: d6da3222eadb83b49952074666990191, type: 3}
   dashing_sprite: {fileID: 21300000, guid: 05914a67fb222254e8b4d734f34fe005, type: 3}
