@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject mRogue;
     [SerializeField] private GameObject mBrute;
     [SerializeField] private GameObject mBasic;
+
     private GameObject hero;
     private GameObject rogue;
     private GameObject brute;
@@ -42,7 +43,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         if (enemy == null) {
-            enemy = Instantiate(enemies[pos]);
+            enemy = Instantiate(enemies[pos]); 
             enemy.GetComponent<EnemyBehavior>().Set_Attr(hero.transform);
             pos++;
             if (pos == enemies.Length) {

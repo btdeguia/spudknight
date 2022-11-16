@@ -12,6 +12,7 @@ public class RogueEnemyBehavior : EnemyBehavior
     private bool rogue_can_dash = true;
 
     void Start() {
+        reward_amount = 15;
         distance_to_attack_temp = base.distance_to_attack;
         base.distance_to_attack = distance_to_dash;
     }

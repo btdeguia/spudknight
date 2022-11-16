@@ -2,15 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : Singleton<UIController>
 {
     [Header("Hero Refs")]
     [SerializeField] private Slider hero_health_slider;
+    [SerializeField] protected GameController gameController;
     private int hero_health = 100;
     [Header("Ability Refs")]
     [SerializeField] private RectTransform parry_cooldown_inside;
 
+    [Header("VC")]
+    [SerializeField] private TextMeshProUGUI status;
+
+
+    void Start()
+    {
+    }
+
+    public void SetCurrencyText()
+    {
+        int currency = FinanceController.Instance.GetCurrency();
+        status.text = "VIRTUAL CURRENCY: " + currency.ToString();
+    }
 
     public void HeroTakeDamage(int damage) {
         hero_health -= damage;

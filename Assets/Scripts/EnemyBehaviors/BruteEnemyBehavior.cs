@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class BruteEnemyBehavior : EnemyBehavior
 {
+
+    void Start()
+    {
+        reward_amount = 25;
+    }
+
     public override IEnumerator Attack()
     {
         attacking = true;

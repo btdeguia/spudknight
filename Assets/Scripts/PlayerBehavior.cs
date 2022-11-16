@@ -36,6 +36,7 @@ public class PlayerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FinanceController.Instance.SetCurrency(0);
         idle_anchor = shield_anchors[0];
         active_anchor = shield_anchors[1];
         shield_transform.position = idle_anchor;

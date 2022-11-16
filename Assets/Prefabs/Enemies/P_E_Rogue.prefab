@@ -108,9 +108,11 @@ MonoBehaviour:
   weapon_behavior: {fileID: 4716512061676670883}
   target: {fileID: 0}
   stun_effect: {fileID: 9076102247350031935}
+  gameController: {fileID: 1845447994555236658, guid: fca209677e80c794a92ef18e81f9a9d4, type: 3}
   speed: 3
   health: 10
   distance_to_attack: 1
+  reward_amount: 0
   attacking: 0
   default_sprite: {fileID: 21300000, guid: d6da3222eadb83b49952074666990191, type: 3}
   dashing_sprite: {fileID: 21300000, guid: 05914a67fb222254e8b4d734f34fe005, type: 3}

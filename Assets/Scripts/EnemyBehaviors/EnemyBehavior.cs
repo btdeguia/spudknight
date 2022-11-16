@@ -11,11 +11,11 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] protected WeaponBehavior weapon_behavior;
     [SerializeField] protected Transform target;
     [SerializeField] protected GameObject stun_effect;
-
     [Header("Enemy Settings")]
     [SerializeField] protected float speed;
     [SerializeField] protected int health;
     [SerializeField] protected int distance_to_attack;
+    [SerializeField] protected int reward_amount;
 
     [SerializeField] protected bool attacking = false;
     protected bool walking = false;
@@ -24,7 +24,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void Start()
     {
-        
+        FinanceController.Instance.SetCurrency(0);
     }
 
     void Update()
@@ -116,9 +116,13 @@ public class EnemyBehavior : MonoBehaviour
             }
             if (health <= 0) {
                 Death();
+                //Game manager virtual currency += reward_amount
+                int currCurrency = FinanceController.Instance.GetCurrency();
+                int calculation = currCurrency + reward_amount;
+                FinanceController.Instance.SetCurrency(calculation);
+                UIController.Instance.SetCurrencyText();
             }
         }
-        
     }
 
     public virtual void OnTriggerExit2D(Collider2D collider) {

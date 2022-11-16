@@ -192,9 +192,11 @@ MonoBehaviour:
   weapon_behavior: {fileID: 1696221928542974280}
   target: {fileID: 0}
   stun_effect: {fileID: 9188838623112972472}
+  gameController: {fileID: 1845447994555236658, guid: fca209677e80c794a92ef18e81f9a9d4, type: 3}
   speed: 1
   health: 2
   distance_to_attack: 3
+  reward_amount: 0
   attacking: 0
 --- !u!95 &7690077637660213471
 Animator:
