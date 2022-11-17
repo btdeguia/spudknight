@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\Controllers\GateController.cs" />
      <Compile Include="Assets\Scripts\Controllers\WeaponRigController.cs" />
      <Compile Include="Assets\Scripts\Controllers\DroppedItemBehavior.cs" />
+     <Compile Include="Assets\Scripts\Controllers\ChestController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

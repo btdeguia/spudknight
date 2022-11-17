@@ -17,13 +17,14 @@ public class DroppedItemBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.E) && within_pickup_dsitance   ) {
+        if (Input.GetKeyDown(KeyCode.E) && within_pickup_dsitance   ) {
             Pickup();
         }
     }
 
     public void SetWeapon(GameObject new_weapon) {
         weapon = new_weapon;
+        sprite_renderer.sprite = weapon.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite;
     }
 
     public void OnTriggerEnter2D(Collider2D collider) {
