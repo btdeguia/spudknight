@@ -17,7 +17,7 @@ public class ChestController : MonoBehaviour
             opened = true;
             open_sprite.SetActive(true);
             closed_sprite.SetActive(false);
-            GameObject item = Instantiate(dropped_item);
+            GameObject item = Instantiate(dropped_item, transform.position, new Quaternion(0, 0, 0, 0));
             item.GetComponent<DroppedItemBehavior>().SetWeapon(weapon);;
             // if (item_behavior != null) {
             //     item_behavior.
