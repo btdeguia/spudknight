@@ -1951,7 +1951,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Fertilizer 100
+  m_text: 'Fertilizer    0
 
 '
   m_isRightToLeft: 0

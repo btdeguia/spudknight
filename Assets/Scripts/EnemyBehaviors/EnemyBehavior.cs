@@ -29,7 +29,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void Start()
     {
-        
+        FinanceController.Instance.SetCurrency(1);
     }
 
     void Update()

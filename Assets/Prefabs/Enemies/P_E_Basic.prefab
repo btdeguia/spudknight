@@ -280,6 +280,7 @@ MonoBehaviour:
   stun_effect: {fileID: 9188838623112972472}
   attack_indicator: {fileID: 3875405904545227330}
   weapon_rig: {fileID: 0}
+  currency: 5
   speed: 1
   health: 3
   distance_to_attack: 2.75
