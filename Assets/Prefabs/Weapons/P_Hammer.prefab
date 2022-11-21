@@ -139,7 +139,7 @@ MonoBehaviour:
   collider: {fileID: 7369455625786405743}
   damage: 10
   distance: 1
-  knockback: 1000
+  knockback: 500
   end_lag: 0.5
   is_enemy_weapon: 0
   charged: 1
@@ -159,6 +159,7 @@ MonoBehaviour:
   ready: 0
   activated: 0
   eneme_swing: 0
+  currencyValue: 25
 --- !u!1 &7590096421369157353
 GameObject:
   m_ObjectHideFlags: 0
