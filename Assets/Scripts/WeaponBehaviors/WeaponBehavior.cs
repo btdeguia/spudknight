@@ -36,6 +36,7 @@ public class WeaponBehavior : MonoBehaviour
 
     [SerializeField] private bool activated = false;
     [SerializeField] private bool eneme_swing = false;
+    [SerializeField] protected int currencyValue = 0;
 
     // Update is called once per frame
     void Update()
@@ -199,5 +200,10 @@ public class WeaponBehavior : MonoBehaviour
 
     public void SetEnemyWeapon() {
         is_enemy_weapon = true;
+    }
+
+    public int GetCurrency()
+    {
+        return currencyValue;
     }
 }

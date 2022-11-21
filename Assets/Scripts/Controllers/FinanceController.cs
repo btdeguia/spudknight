@@ -15,4 +15,13 @@ public class FinanceController : Singleton<FinanceController>
     {
         this.currency = currency;
     }
+
+    public void BuyWeapon(GameObject gameObject)
+    {
+        WeaponBehavior weaponBehavior = gameObject.GetComponent<WeaponBehavior>();
+        if (gameObject != null && weaponBehavior != null)
+        {
+            SetCurrency(GetCurrency() - weaponBehavior.GetCurrency());
+        }
+    }
 }

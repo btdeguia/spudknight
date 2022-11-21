@@ -94,4 +94,9 @@ public class UIController : Singleton<UIController>
     public void SetWeaponBoxSprite(Sprite sprit) {
         weapon_box_renderer.sprite = sprit;
     }
+
+    public void SetCurrencyText()
+    {
+        hero_currency_text.text = "Fertilizer:    " + FinanceController.Instance.GetCurrency(); 
+    }
 }

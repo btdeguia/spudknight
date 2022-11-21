@@ -29,7 +29,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void Start()
     {
-        FinanceController.Instance.SetCurrency(1);
+        FinanceController.Instance.SetCurrency(0);
     }
 
     void Update()
@@ -154,6 +154,7 @@ public class EnemyBehavior : MonoBehaviour
                 int currCurrency = FinanceController.Instance.GetCurrency();
                 int calculation = currCurrency + reward_amount;
                 FinanceController.Instance.SetCurrency(calculation);
+                UIController.Instance.SetCurrencyText();
             }
         }
         

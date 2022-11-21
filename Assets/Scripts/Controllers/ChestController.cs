@@ -14,14 +14,17 @@ public class ChestController : MonoBehaviour
 
     void Update() {
         if (Input.GetKey(KeyCode.E) && !opened) {
-            opened = true;
-            open_sprite.SetActive(true);
-            closed_sprite.SetActive(false);
-            GameObject item = Instantiate(dropped_item);
-            item.GetComponent<DroppedItemBehavior>().SetWeapon(weapon);;
-            // if (item_behavior != null) {
-            //     item_behavior.
-            // }
+            if (FinanceController.Instance.GetCurrency() >= weapon.transform.GetChild(0).GetComponent<WeaponBehavior>().GetCurrency())
+            {
+                opened = true;
+                open_sprite.SetActive(true);
+                closed_sprite.SetActive(false);
+                GameObject item = Instantiate(dropped_item, transform.position, new Quaternion(0, 0, 0, 0));
+                item.GetComponent<DroppedItemBehavior>().SetWeapon(weapon); ;
+                // if (item_behavior != null) {
+                //     item_behavior.
+                // }
+            }
         }
     }
 
