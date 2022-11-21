@@ -22,12 +22,16 @@ public class RogueEnemyBehavior : EnemyBehavior
         if (!base.stunned) {
            if (rogue_can_dash) {
                 base.attacking = true;
+                base.attack_indicator.SetActive(true);
                 yield return new WaitForSeconds(1f);
+                base.attack_indicator.SetActive(false);
                 StartCoroutine(rogue_dash());
             } else {
                 if (!base.attacking) {
                     attacking = true;
+                    base.attack_indicator.SetActive(true);
                     yield return new WaitForSeconds(0.25f);
+                    base.attack_indicator.SetActive(false);
                     StartCoroutine(attack_helper());
                 }
             } 

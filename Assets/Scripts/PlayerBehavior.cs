@@ -41,6 +41,7 @@ public class PlayerBehavior : MonoBehaviour
         idle_anchor = shield_anchors[0];
         active_anchor = shield_anchors[1];
         shield_transform.position = idle_anchor;
+        UIController.Instance.SetHeroHealth(health);
     }
 
     // Update is called once per frame
@@ -131,6 +132,11 @@ public class PlayerBehavior : MonoBehaviour
         parrying = true;
         yield return new WaitForSeconds(0.25f);
         parrying = false;
+        yield return new WaitForSeconds(0.75f);
+        blocking = false;
+        UIController.Instance.ReleaseParryButton(1f);
+        update_shield();
+        StartCoroutine(block_cooldown());
     }
 
     private IEnumerator parry_cooldown() {

@@ -1081,7 +1081,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7013505031882561766, guid: befbf12b7c394ef45997af80085e69bf, type: 3}
       propertyPath: speed
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7013505031882561766, guid: befbf12b7c394ef45997af80085e69bf, type: 3}
       propertyPath: weapon_rig_controller

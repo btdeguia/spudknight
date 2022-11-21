@@ -274,8 +274,9 @@ MonoBehaviour:
   sprite_renderer: {fileID: -1168390361093303223}
   rigidbody_2d: {fileID: 8633570857825234562}
   collider_2d: {fileID: 1445225061525797431}
-  speed: 2
-  health: 0
+  weapon_rig_controller: {fileID: 0}
+  speed: 5
+  health: 100
   shield_transform: {fileID: 4445326857249220906}
   shield_renderer: {fileID: 1706084457677766148}
   shield_idle: {fileID: 21300000, guid: 7f41c1c36063b96479ca852e9ed4db57, type: 3}

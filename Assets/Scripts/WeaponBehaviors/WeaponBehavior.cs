@@ -19,6 +19,7 @@ public class WeaponBehavior : MonoBehaviour
     [SerializeField] private float knockback;
     [SerializeField] private float end_lag;
     [SerializeField] private bool is_enemy_weapon;
+    private bool weapon_box_set = false;
 
     [Header("Charged Weapon Attributes")]
     [SerializeField] private bool charged;
@@ -52,6 +53,10 @@ public class WeaponBehavior : MonoBehaviour
     }
 
     private void move_weapon() {
+        if (!is_enemy_weapon && !weapon_box_set) {
+            weapon_box_set = true;
+            UIController.Instance.SetWeaponBoxSprite(base_image);
+        }
         Vector3 v3target = new Vector3();
         if (target != null) { // if there is a target (i.e. player) use that
             v3target = target.position;
@@ -129,15 +134,22 @@ public class WeaponBehavior : MonoBehaviour
     // }
 
     private IEnumerator swing_weapon() {
+        activated = true;
         weapon_idle.SetActive(false);
         idle_renderer.sprite = base_image;
         weapon_active.SetActive(true);
         for (int i = 0; i < active_frames.Length; i++) {
             active_renderer.sprite = active_frames[i];
+            if (!is_enemy_weapon) {
+                UIController.Instance.SetWeaponBoxSprite(active_frames[i]);
+            }
             yield return new WaitForSeconds(active_frames_window);
         }
         weapon_idle.SetActive(true);
         weapon_active.SetActive(false);
+        if (!is_enemy_weapon) {
+                UIController.Instance.SetWeaponBoxSprite(base_image);
+            }
         yield return new WaitForSeconds(end_lag);
         activated = false;
     }

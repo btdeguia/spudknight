@@ -12,6 +12,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] protected WeaponBehavior weapon_behavior;
     [SerializeField] protected Transform target;
     [SerializeField] protected GameObject stun_effect;
+    [SerializeField] protected GameObject attack_indicator;
     [SerializeField] protected WeaponRigController weapon_rig;
 
     [Header("Enemy Settings")]
@@ -83,10 +84,12 @@ public class EnemyBehavior : MonoBehaviour
 
     public virtual IEnumerator Attack() {
         attacking = true;
+        attack_indicator.SetActive(true);
         yield return new WaitForSeconds(0.25f);
         if (!stunned) {
             weapon_behavior.Swing();
         }
+        attack_indicator.SetActive(false);
         yield return new WaitForSeconds(1f);
         attacking = false;
     }
