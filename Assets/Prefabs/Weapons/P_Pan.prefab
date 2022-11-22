@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 10248621
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9ed4406e9b0dc5c4e9af92fff3f2a0d6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5845d801d5469c42bdbf96422c4d8ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +95,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -110,28 +110,68 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.57, y: 0.07}
-      - {x: 0.53999996, y: 0.06}
-      - {x: 0.53999996, y: -0.14999999}
-      - {x: 0.56, y: -0.22}
-      - {x: 0.76, y: -0.26}
-      - {x: 1.16, y: -0.26}
-      - {x: 1.28, y: -0.16}
-      - {x: 1.28, y: 0.07}
-    - - {x: 0.12, y: 0.90999997}
-      - {x: 0.19999999, y: 0.96999997}
-      - {x: 0.11, y: 1.16}
-      - {x: -0.39, y: 1.16}
-      - {x: -0.45999998, y: 1.15}
-      - {x: -0.52, y: 1.12}
-      - {x: -0.52, y: 1.05}
-      - {x: -0.5, y: 1}
-      - {x: 0.12, y: 0.62}
-      - {x: 0.25, y: 0.58}
-      - {x: 0.34, y: 0.58}
-      - {x: 0.37, y: 0.61}
-      - {x: 0.37, y: 0.77}
-      - {x: 0.35999998, y: 0.82}
+    - - {x: 0.98999995, y: -0.24}
+      - {x: 0.98999995, y: -0.06}
+      - {x: 0.95, y: 0.03}
+      - {x: 0.93, y: 0.06}
+      - {x: 0.89, y: 0.06}
+      - {x: 0.84999996, y: 0.04}
+      - {x: 0.9, y: -0.37}
+      - {x: 0.84, y: -0.63}
+      - {x: 0.78, y: -0.71}
+      - {x: 0.65999997, y: -0.83}
+      - {x: 0.65999997, y: -0.9}
+      - {x: 0.66999996, y: -0.91999996}
+      - {x: 0.72999996, y: -0.91999996}
+      - {x: 0.85999995, y: -0.78}
+      - {x: 0.96, y: -0.59}
+      - {x: 0.97999996, y: -0.45999998}
+    - - {x: 1.23, y: -0.35}
+      - {x: 1.23, y: 0.01}
+      - {x: 1.1999999, y: 0.17}
+      - {x: 1.17, y: 0.19999999}
+      - {x: 1.13, y: 0.19999999}
+      - {x: 1.0799999, y: 0.17999999}
+      - {x: 1.15, y: -0.089999996}
+      - {x: 1.1, y: -0.53999996}
+      - {x: 0.93, y: -0.81}
+      - {x: 0.93, y: -0.9}
+      - {x: 1.01, y: -0.9}
+      - {x: 1.12, y: -0.76}
+      - {x: 1.1899999, y: -0.55}
+      - {x: 1.22, y: -0.48}
+    - - {x: 0.47, y: -0.03}
+      - {x: 0.45, y: -0.08}
+      - {x: 0.08, y: -0.65999997}
+      - {x: -0.01, y: -0.66999996}
+      - {x: -0.02, y: -0.69}
+      - {x: -0.02, y: -0.75}
+      - {x: 0.16, y: -0.75}
+      - {x: 0.28, y: -0.71999997}
+      - {x: 0.53999996, y: -0.29999998}
+      - {x: 0.53999996, y: -0.03}
+    - - {x: 0.57, y: 0.049999997}
+      - {x: 0.79999995, y: 0.07}
+      - {x: 1, y: 0.14999999}
+      - {x: 1.12, y: 0.26999998}
+      - {x: 1.16, y: 0.38}
+      - {x: 1.16, y: 0.64}
+      - {x: 1.15, y: 0.76}
+      - {x: 1.11, y: 0.87}
+      - {x: 0.83, y: 1.05}
+      - {x: 0.71999997, y: 1.06}
+      - {x: 0.5, y: 1.06}
+      - {x: 0.34, y: 1.01}
+      - {x: 0.22999999, y: 0.85999995}
+      - {x: 0.16, y: 0.65999997}
+      - {x: 0.17, y: 0.48999998}
+      - {x: -0.21, y: 0.16}
+      - {x: -0.21, y: 0.089999996}
+      - {x: -0.099999994, y: -0.03}
+      - {x: -0.02, y: -0.03}
+      - {x: 0.29999998, y: 0.16}
+      - {x: 0.41, y: 0.19}
+      - {x: 0.48, y: 0.12}
 --- !u!1 &4204917738856348058
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2232784887636352861}
   m_Layer: 0
-  m_Name: P_Knives
+  m_Name: P_Pan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +277,7 @@ SpriteRenderer:
   m_SortingLayerID: 10248621
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5fa585fb8c15d2046a9fe8685c9220a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 93e1a6b924a9a3a40b2570365a4a06cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -301,26 +341,27 @@ MonoBehaviour:
   idle_renderer: {fileID: 4871082176884992556}
   active_renderer: {fileID: 2973385621352920547}
   collider: {fileID: 6441130558190100006}
-  damage: 2
-  distance: 0
-  knockback: 200
+  damage: 7
+  distance: 1.25
+  knockback: 300
   end_lag: 0.25
   is_enemy_weapon: 0
-  message: '<b>Weapon Acquired: Knives</b>
+  message: '<b>Weapon Acquired: Frying Pan</b>
 
-    Double the fun!'
-  charged: 0
+    Bonk!'
+  charged: 1
   animator: {fileID: 0}
-  charge_time: 0
-  base_image: {fileID: 21300000, guid: 5fa585fb8c15d2046a9fe8685c9220a6, type: 3}
-  charging_frames: []
+  charge_time: 1
+  base_image: {fileID: 21300000, guid: 93e1a6b924a9a3a40b2570365a4a06cd, type: 3}
+  charging_frames:
+  - {fileID: 21300000, guid: 2566264b33995c745a2dd0d9ed11f1bd, type: 3}
+  - {fileID: 21300000, guid: 3b0e55f3c08442f45939a2f43ce9b519, type: 3}
+  - {fileID: 21300000, guid: 95aece994accbf54c8022661a60af5f6, type: 3}
   active_frames:
-  - {fileID: 21300000, guid: 9ed4406e9b0dc5c4e9af92fff3f2a0d6, type: 3}
-  - {fileID: 21300000, guid: 5fa585fb8c15d2046a9fe8685c9220a6, type: 3}
-  - {fileID: 21300000, guid: 2d12c3668656d8e45aef9f5ffe37a555, type: 3}
+  - {fileID: 21300000, guid: c5845d801d5469c42bdbf96422c4d8ab, type: 3}
   active_frames_window: 0.25
   held: 0
   ready: 0
   activated: 0
   eneme_swing: 0
-  currencyValue: 0
+  currencyValue: 15

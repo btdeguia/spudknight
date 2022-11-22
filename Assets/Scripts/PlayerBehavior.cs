@@ -147,8 +147,10 @@ public class PlayerBehavior : MonoBehaviour
     private void update_shield() {
         if (blocking) {
             shield_transform.localPosition = active_anchor;
+            UIController.Instance.SetWeaponBoxSprite(shield_idle);
         } else {
             shield_transform.localPosition = idle_anchor;
+            UIController.Instance.SetWeaponBoxSprite(weapon_rig_controller.GetCurrentWeapon().transform.GetChild(0).GetComponent<WeaponBehavior>().GetIcon());
         }
     }
 
@@ -193,6 +195,7 @@ public class PlayerBehavior : MonoBehaviour
                     if (parrying) {
                         Debug.Log("parried");
                         shield_renderer.sprite = shield_active;
+                        UIController.Instance.SetWeaponBoxSprite(shield_active);
                         StartCoroutine(parry_cooldown());
                         if (weapon.transform.parent != null && weapon.transform.parent.parent != null) {
                             WeaponRigController controller = weapon.transform.parent.parent.GetComponent<WeaponRigController>();
@@ -230,5 +233,10 @@ public class PlayerBehavior : MonoBehaviour
 
     public void Pickup_Weapon(GameObject weapon) {
         weapon_rig_controller.AddWeapon(weapon);
+        WeaponBehavior weapon_behavior = weapon.transform.GetChild(0).GetComponent<WeaponBehavior>();
+        if (weapon_behavior != null) {
+            UIController.Instance.OpenPopup(weapon_behavior.GetIcon(), weapon_behavior.GetMessage());
+        }
+        
     }
 }

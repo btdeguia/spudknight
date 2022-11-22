@@ -142,6 +142,9 @@ MonoBehaviour:
   knockback: 500
   end_lag: 0.5
   is_enemy_weapon: 0
+  message: '<b>Weapon Acquired: Masher</b>
+
+    Adam Masher''s best friend'
   charged: 1
   animator: {fileID: 0}
   charge_time: 1

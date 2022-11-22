@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FinanceController : Singleton<FinanceController>
 {
-    protected int currency = 0;
+    protected int currency = 25;
 
     public int GetCurrency()
     {

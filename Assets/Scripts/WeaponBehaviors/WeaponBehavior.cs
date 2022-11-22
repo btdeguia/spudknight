@@ -19,6 +19,8 @@ public class WeaponBehavior : MonoBehaviour
     [SerializeField] private float knockback;
     [SerializeField] private float end_lag;
     [SerializeField] private bool is_enemy_weapon;
+    [Multiline]
+    [SerializeField] private string message;
     private bool weapon_box_set = false;
 
     [Header("Charged Weapon Attributes")]
@@ -149,8 +151,8 @@ public class WeaponBehavior : MonoBehaviour
         weapon_idle.SetActive(true);
         weapon_active.SetActive(false);
         if (!is_enemy_weapon) {
-                UIController.Instance.SetWeaponBoxSprite(base_image);
-            }
+            UIController.Instance.SetWeaponBoxSprite(base_image);
+        }
         yield return new WaitForSeconds(end_lag);
         activated = false;
     }
@@ -158,6 +160,9 @@ public class WeaponBehavior : MonoBehaviour
     private IEnumerator charge_weapon() {
         for (int i = 0; i < charging_frames.Length; i++) {
             idle_renderer.sprite = charging_frames[i];
+            if (!is_enemy_weapon) {
+                UIController.Instance.SetWeaponBoxSprite(charging_frames[i]);
+            }
             yield return new WaitForSeconds(charge_time / charging_frames.Length);
         }
         ready = true;
@@ -180,6 +185,9 @@ public class WeaponBehavior : MonoBehaviour
                     StopCoroutine(charging_func);
                 }
                 idle_renderer.sprite = base_image;
+                if (!is_enemy_weapon) {
+                    UIController.Instance.SetWeaponBoxSprite(base_image);
+                }
                 charging_func = null;
             }
             ready = false;
@@ -205,5 +213,13 @@ public class WeaponBehavior : MonoBehaviour
     public int GetCurrency()
     {
         return currencyValue;
+    }
+
+    public Sprite GetIcon() {
+        return base_image;
+    }
+
+    public string GetMessage() {
+        return message;
     }
 }

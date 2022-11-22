@@ -369,6 +369,9 @@ MonoBehaviour:
   knockback: 200
   end_lag: 0.25
   is_enemy_weapon: 0
+  message: '<b>Weapon Acquired: Peeler</b>
+
+    A potato''s greatest enemy!'
   charged: 0
   animator: {fileID: 0}
   charge_time: 0
@@ -381,3 +384,4 @@ MonoBehaviour:
   ready: 0
   activated: 0
   eneme_swing: 0
+  currencyValue: 0

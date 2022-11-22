@@ -23,6 +23,10 @@ public class UIController : Singleton<UIController>
     [SerializeField] private GameObject menu_text;
     private bool menu_active = false;
     private float temp_time_scale;
+    [Header("Other Refs")]
+    [SerializeField] private GameObject popup_box;
+    [SerializeField] private TextMeshProUGUI popup_text;
+    [SerializeField] private Image popup_image;
 
 
     void Update() {
@@ -99,4 +103,20 @@ public class UIController : Singleton<UIController>
     {
         hero_currency_text.text = "Fertilizer:    " + FinanceController.Instance.GetCurrency(); 
     }
+
+    public void OpenPopup(Sprite w_image, string pop_text) {
+        popup_box.SetActive(true);
+        if (w_image != null) {
+            popup_image.gameObject.SetActive(true);
+            popup_image.sprite = w_image;
+        }
+        popup_text.text = pop_text;
+        StartCoroutine(ClosePopup());
+    }
+
+    private IEnumerator ClosePopup() {
+        yield return new WaitForSeconds(5f);
+        popup_image.gameObject.SetActive(false);
+        popup_box.SetActive(false);
+    } 
 }

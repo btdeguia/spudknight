@@ -9,11 +9,11 @@ public class ChestController : MonoBehaviour
     [SerializeField] private GameObject open_sprite;
     [SerializeField] private GameObject closed_sprite;
 
-    private bool within_open_dsitance = false;
-    private bool opened = false;
+    [SerializeField] private bool within_open_dsitance = false;
+    [SerializeField] private bool opened = false;
 
     void Update() {
-        if (Input.GetKey(KeyCode.E) && !opened) {
+        if (Input.GetKey(KeyCode.E) && !opened && within_open_dsitance) {
             if (FinanceController.Instance.GetCurrency() >= weapon.transform.GetChild(0).GetComponent<WeaponBehavior>().GetCurrency())
             {
                 opened = true;
@@ -24,15 +24,18 @@ public class ChestController : MonoBehaviour
                 // if (item_behavior != null) {
                 //     item_behavior.
                 // }
+            } else {
+                UIController.Instance.OpenPopup(null, "Not enough currency!");
             }
         }
     }
 
     public void OnTriggerEnter2D(Collider2D collider) {
+        Debug.Log("collided with the chest");
         if (!opened) {
             PlayerBehavior behavior = collider.gameObject.GetComponent<PlayerBehavior>();
             if (behavior != null) {
-            within_open_dsitance = true; 
+                within_open_dsitance = true; 
             }
         }
         

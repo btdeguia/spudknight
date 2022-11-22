@@ -111,4 +111,8 @@ public class WeaponRigController : MonoBehaviour
             internal_weapon_list.Add(new_weapon);
         }
     }
+
+    public GameObject GetCurrentWeapon() {
+        return internal_weapon_list[weapon_pos];
+    }
 }
