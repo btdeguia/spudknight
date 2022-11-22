@@ -16,6 +16,8 @@ public class WeaponRigController : MonoBehaviour
     [SerializeField] private GameObject weapon_inst;
     private int weapon_pos = 0;
 
+    private WeaponBehavior weapon_behavior;
+
     void OnEnable() {
         if (weapon != null) {
             internal_weapon_list.Add(weapon);
@@ -23,6 +25,7 @@ public class WeaponRigController : MonoBehaviour
             weapon_inst = Instantiate(weapon);
             weapon_inst.transform.parent = transform;
             WeaponBehavior behavior = weapon_inst.transform.GetChild(0).GetComponent<WeaponBehavior>();
+            weapon_behavior = behavior;
             if (behavior != null) {
                 if (is_enemy) {
                     behavior.SetTarget(enemy.GetTarget());
@@ -48,7 +51,7 @@ public class WeaponRigController : MonoBehaviour
             } 
         }
 
-        if (Input.mouseScrollDelta.y > 0) {
+        if (Input.mouseScrollDelta.y > 0 && !weapon_behavior.IsEnemyWeapon() && internal_weapon_list.Count > 1) {
             Debug.Log(Input.mouseScrollDelta.y);
             Destroy(weapon_inst);
             weapon_pos++;
@@ -58,7 +61,7 @@ public class WeaponRigController : MonoBehaviour
             Instantiate_Weapon();
         }
 
-        if (Input.mouseScrollDelta.y < 0) {
+        if (Input.mouseScrollDelta.y < 0 && !weapon_behavior.IsEnemyWeapon() && internal_weapon_list.Count > 1) {
             Debug.Log(Input.mouseScrollDelta.y);
             Destroy(weapon_inst);
             weapon_pos--;
@@ -74,6 +77,7 @@ public class WeaponRigController : MonoBehaviour
         weapon_inst = Instantiate(internal_weapon_list[weapon_pos]);
         weapon_inst.transform.parent = transform;
         WeaponBehavior behavior = weapon_inst.transform.GetChild(0).GetComponent<WeaponBehavior>();
+        weapon_behavior = behavior;
         if (behavior != null) {
             if (is_enemy) {
                 behavior.SetTarget(enemy.GetTarget());
