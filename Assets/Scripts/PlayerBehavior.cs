@@ -42,6 +42,7 @@ public class PlayerBehavior : MonoBehaviour
         active_anchor = shield_anchors[1];
         shield_transform.position = idle_anchor;
         UIController.Instance.SetHeroHealth(health);
+        update_shield();
     }
 
     // Update is called once per frame
@@ -216,9 +217,16 @@ public class PlayerBehavior : MonoBehaviour
                     
                 }
             }
-            
+            if (health <= 0) {
+                death();
+            }
             
         
+    }
+
+    private void death() {
+        UIController.Instance.ShowDeathScreen();
+        Time.timeScale = 0;
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {

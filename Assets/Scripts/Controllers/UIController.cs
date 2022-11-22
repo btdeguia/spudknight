@@ -27,6 +27,7 @@ public class UIController : Singleton<UIController>
     [SerializeField] private GameObject popup_box;
     [SerializeField] private TextMeshProUGUI popup_text;
     [SerializeField] private Image popup_image;
+    [SerializeField] private GameObject death_screen;
 
 
     void Update() {
@@ -119,4 +120,8 @@ public class UIController : Singleton<UIController>
         popup_image.gameObject.SetActive(false);
         popup_box.SetActive(false);
     } 
+
+    public void ShowDeathScreen() {
+        death_screen.SetActive(true);
+    }
 }
