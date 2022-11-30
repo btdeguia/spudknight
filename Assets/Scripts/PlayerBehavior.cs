@@ -30,10 +30,7 @@ public class PlayerBehavior : MonoBehaviour
     private bool parrying = false;
     private bool blocking = false;
     private bool block_available = true;
-
-    
-
-    
+    private bool gettingKnocked = false;
 
     // Start is called before the first frame update
     void Start()
@@ -55,32 +52,20 @@ public class PlayerBehavior : MonoBehaviour
 
     private void walk() {
         walking = false;
-        // if (Input.GetKey(KeyCode.W)) {
-        //     transform.Translate(0, speed * Time.deltaTime, 0);
-        //     walking = true;
-        // }
-        // if (Input.GetKey(KeyCode.A)) {
-        //     transform.Translate(-speed * Time.deltaTime, 0, 0);
-        //     walking = true;
-        // }
-        // if (Input.GetKey(KeyCode.D)) {
-        //     transform.Translate(speed * Time.deltaTime, 0, 0);
-        //     walking = true;
-        // }
-        // if (Input.GetKey(KeyCode.S)) {
-        //     transform.Translate(0, -speed * Time.deltaTime, 0);
-        //     walking = true;
-        // }
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        if (!gettingKnocked)
         {
-            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
-            movement.Normalize();
-            rigidbody_2d.velocity =  movement * speed;
-            walking = true;
-        }
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D)) {
-            rigidbody_2d.velocity = Vector2.zero;
-            walking = false;
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+                movement.Normalize();
+                rigidbody_2d.velocity = movement * speed;
+                walking = true;
+            }
+            if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
+            {
+                rigidbody_2d.velocity = Vector2.zero;
+                walking = false;
+            }
         }
         animator.SetBool("is_walking", walking);
     }
@@ -172,9 +157,11 @@ public class PlayerBehavior : MonoBehaviour
             Vector2 direction = collider.transform.parent.localPosition; // get local position of weapon
             direction.x = direction.x + 1.25f; // normalize it (left = positive, right = negative)
             float knockback = collider.transform.parent.GetComponent<WeaponBehavior>().GetKnockback(); // get knockback value from parent
+            gettingKnocked = true;
             rigidbody_2d.AddForce(direction * knockback * Time.smoothDeltaTime, ForceMode2D.Impulse);
             yield return new WaitForSeconds(0.25f);
             rigidbody_2d.velocity = Vector2.zero;
+            gettingKnocked = false;
         }
         
     }

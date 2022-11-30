@@ -52,7 +52,7 @@ public class WeaponRigController : MonoBehaviour
         }
 
         if (Input.mouseScrollDelta.y > 0 && !weapon_behavior.IsEnemyWeapon() && internal_weapon_list.Count > 1) {
-            Debug.Log(Input.mouseScrollDelta.y);
+            //Debug.Log(Input.mouseScrollDelta.y);
             Destroy(weapon_inst);
             weapon_pos++;
             if (weapon_pos >= internal_weapon_list.Count) {
@@ -62,7 +62,7 @@ public class WeaponRigController : MonoBehaviour
         }
 
         if (Input.mouseScrollDelta.y < 0 && !weapon_behavior.IsEnemyWeapon() && internal_weapon_list.Count > 1) {
-            Debug.Log(Input.mouseScrollDelta.y);
+            //Debug.Log(Input.mouseScrollDelta.y);
             Destroy(weapon_inst);
             weapon_pos--;
             if (weapon_pos < 0) {
@@ -77,6 +77,7 @@ public class WeaponRigController : MonoBehaviour
         weapon_inst = Instantiate(internal_weapon_list[weapon_pos]);
         weapon_inst.transform.parent = transform;
         WeaponBehavior behavior = weapon_inst.transform.GetChild(0).GetComponent<WeaponBehavior>();
+        //Debug.Log(behavior);
         weapon_behavior = behavior;
         if (behavior != null) {
             if (is_enemy) {
@@ -87,6 +88,7 @@ public class WeaponRigController : MonoBehaviour
             } else {
                 behavior.SetTarget(null);
                 behavior.SetAnchor(transform);
+                FinanceController.Instance.SetWeaponPos(new Vector2(transform.position.x, transform.position.y));
             }
             
         } 

@@ -111,8 +111,14 @@ public class EnemyBehavior : MonoBehaviour
         if (collider.gameObject.name != "P_Player" && !knockback_active) {
             knockback_active = true;
             Vector2 direction = collider.transform.parent.localPosition; // get local position of weapon
+            //normalize???
+            //weapon rig position - direction
+            direction -= FinanceController.Instance.GetWeaponPos();
+            //direction.Normalize();
+            Debug.Log(direction);
             // direction.Normalize(); // normalize it (left = positive, right = negative)
             float knockback = collider.transform.parent.GetComponent<WeaponBehavior>().GetKnockback(); // get knockback value from parent
+            Debug.Log("ONE WHO KNOCKS " + knockback);
             rigidbody_2d.AddForce(direction * knockback * Time.smoothDeltaTime, ForceMode2D.Impulse);
             Vector3 dest = new Vector3(transform.position.x + direction.x, transform.position.y + direction.y, 0);
             
@@ -132,7 +138,7 @@ public class EnemyBehavior : MonoBehaviour
         //     // Physics2D.IgnoreCollision(collider_2d, collider.GetComponent<Collider>(), true);
         // }
         if (collider.gameObject.name != "P_Player" && collider.gameObject != weapon_behavior.gameObject && collider.gameObject.name[2] != 'E') {
-            Debug.Log(collider.gameObject.name + " collided with " + gameObject.name);
+            //Debug.Log(collider.gameObject.name + " collided with " + gameObject.name);
             WeaponBehavior collider_weapon_behavior = collider.transform.parent.GetComponent<WeaponBehavior>();
             if (collider_weapon_behavior != null) { // if is a weapon
                 if (!collider_weapon_behavior.IsEnemyWeapon()) { // if is not an enemy weapon

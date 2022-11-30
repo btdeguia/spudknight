@@ -5,6 +5,17 @@ using UnityEngine;
 public class FinanceController : Singleton<FinanceController>
 {
     protected int currency = 25;
+    protected Vector2 weapon_pos = new Vector2(0.0f, 0.0f);
+
+    public Vector2 GetWeaponPos()
+    {
+        return weapon_pos;
+    }
+
+    public void SetWeaponPos(Vector2 wp)
+    {
+        weapon_pos = wp;
+    }
 
     public int GetCurrency()
     {
@@ -18,10 +29,7 @@ public class FinanceController : Singleton<FinanceController>
 
     public void BuyWeapon(GameObject gameObject)
     {
-        WeaponBehavior weaponBehavior = gameObject.GetComponent<WeaponBehavior>();
-        if (gameObject != null && weaponBehavior != null)
-        {
-            SetCurrency(GetCurrency() - weaponBehavior.GetCurrency());
-        }
+        WeaponBehavior weaponBehavior = gameObject.transform.GetChild(0).GetComponent<WeaponBehavior>();
+        SetCurrency(GetCurrency() - weaponBehavior.GetCurrency());
     }
 }

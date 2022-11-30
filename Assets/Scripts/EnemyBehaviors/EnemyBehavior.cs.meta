@@ -3,7 +3,17 @@ guid: 5649f074085b89d4d81c868a1836521b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - animator: {instanceID: 0}
+  - sprite_renderer: {instanceID: 0}
+  - rigidbody_2d: {instanceID: 0}
+  - collider_2d: {instanceID: 0}
+  - weapon_behavior: {instanceID: 0}
+  - target: {instanceID: 0}
+  - stun_effect: {instanceID: 0}
+  - attack_indicator: {instanceID: 0}
+  - wr: {instanceID: 0}
+  - weapon_rig: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
