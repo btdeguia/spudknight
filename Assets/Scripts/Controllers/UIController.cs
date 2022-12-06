@@ -28,6 +28,10 @@ public class UIController : Singleton<UIController>
     [SerializeField] private TextMeshProUGUI popup_text;
     [SerializeField] private Image popup_image;
     [SerializeField] private GameObject death_screen;
+    [SerializeField] private GameObject win_screen;
+    [SerializeField] private GameObject boss_screen;
+    [SerializeField] private GameObject boss_attr;
+    [SerializeField] private Slider boss_healthbar;
 
 
     void Update() {
@@ -123,5 +127,29 @@ public class UIController : Singleton<UIController>
 
     public void ShowDeathScreen() {
         death_screen.SetActive(true);
+    }
+
+    public void ShowWinScreen() {
+        win_screen.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+
+    public void ShowBossScreen() {
+        StartCoroutine(StartBossScreen());
+    }
+
+    private IEnumerator StartBossScreen() {
+        float prevTime = Time.timeScale;
+        Time.timeScale = 0;
+        boss_screen.SetActive(true);
+        yield return new WaitForSecondsRealtime(5f);
+        boss_screen.SetActive(false);
+        boss_attr.SetActive(true);
+        Time.timeScale = prevTime;
+    }
+
+    public void BossTakeDamage(int damage) {
+        boss_healthbar.value -= damage;
     }
 }
