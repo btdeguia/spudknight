@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 458906104334540340}
   - component: {fileID: 9197795876192897981}
   - component: {fileID: 887036448598144993}
+  - component: {fileID: 215468381652141732}
   - component: {fileID: 3754727780662636315}
   - component: {fileID: 3690469060954532029}
-  - component: {fileID: 215468381652141732}
   m_Layer: 0
   m_Name: P_E_Fryromancer
   m_TagString: Untagged
@@ -127,6 +127,26 @@ MonoBehaviour:
   - {x: 5, y: 140, z: 0}
   - {x: -5, y: 140, z: 0}
   room: {fileID: 0}
+--- !u!95 &215468381652141732
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3307483492542526379}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c09910cff335074592c2d5c84b92a4e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!60 &3754727780662636315
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -424,26 +444,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!95 &215468381652141732
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3307483492542526379}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5c09910cff335074592c2d5c84b92a4e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5027156596196599382
 GameObject:
   m_ObjectHideFlags: 0

@@ -125,7 +125,7 @@ public class BossEnemyBehavior : MonoBehaviour
 
     public virtual void Death() {
         StopAllCoroutines();
-        Destroy(weapon_rig.gameObject);
+        // Destroy(weapon_rig.gameObject);
         Destroy(gameObject);
         UIController.Instance.ShowWinScreen();
     }
@@ -156,6 +156,8 @@ public class BossEnemyBehavior : MonoBehaviour
                         // sprite_renderer.color /= 1.1f;
                         StartCoroutine(Hitstun()); 
                         
+                    } else {
+                        Death();
                     }
                     
                 }
