@@ -11,6 +11,10 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidbody_2d;
     [SerializeField] private Collider2D collider_2d;
     [SerializeField] private WeaponRigController weapon_rig_controller;
+
+    [SerializeField] private Material red_mat;
+    [SerializeField] private Material default_mat;
+
     [Header("Player Settings")]
     [SerializeField] private float speed;
     [SerializeField] private int health;
@@ -195,6 +199,7 @@ public class PlayerBehavior : MonoBehaviour
                     }
                     if (!blocking) {
                         health -= weapon.GetDamage();
+                        StartCoroutine(damage_effect());
                         UIController.Instance.HeroTakeDamage(weapon.GetDamage());
                         // sprite_renderer.color /= 1.1f;
             
@@ -210,6 +215,12 @@ public class PlayerBehavior : MonoBehaviour
             }
             
         
+    }
+
+    public IEnumerator damage_effect() {
+        sprite_renderer.material = red_mat;
+        yield return new WaitForSeconds(0.25f);
+        sprite_renderer.material = default_mat;
     }
 
     private void death() {

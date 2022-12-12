@@ -252,7 +252,7 @@ MonoBehaviour:
   knockback: 100
   end_lag: 0.25
   is_enemy_weapon: 0
-  message: 
+  message: Heeere's Barry!
   charged: 0
   animator: {fileID: 0}
   charge_time: 0

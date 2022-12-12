@@ -280,6 +280,8 @@ MonoBehaviour:
   stun_effect: {fileID: 9188838623112972472}
   attack_indicator: {fileID: 3875405904545227330}
   weapon_rig: {fileID: 0}
+  red_mat: {fileID: 2100000, guid: af6cdad906b8d224cad6190d1de62fe8, type: 2}
+  default_mat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   speed: 2
   health: 3
   distance_to_attack: 2.75

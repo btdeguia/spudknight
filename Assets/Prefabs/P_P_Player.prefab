@@ -275,6 +275,8 @@ MonoBehaviour:
   rigidbody_2d: {fileID: 8633570857825234562}
   collider_2d: {fileID: 1445225061525797431}
   weapon_rig_controller: {fileID: 0}
+  red_mat: {fileID: 2100000, guid: af6cdad906b8d224cad6190d1de62fe8, type: 2}
+  default_mat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   speed: 5
   health: 100
   shield_transform: {fileID: 4445326857249220906}

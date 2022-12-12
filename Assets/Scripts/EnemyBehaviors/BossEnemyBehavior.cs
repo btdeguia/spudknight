@@ -15,6 +15,9 @@ public class BossEnemyBehavior : MonoBehaviour
     [SerializeField] private GameObject attack_indicator;
     [SerializeField] private WeaponRigController weapon_rig;
 
+    [SerializeField] private Material red_mat;
+    [SerializeField] private Material default_mat;
+
     [Header("Enemy Settings")]
     [SerializeField] private float speed;
     [SerializeField] private int health;
@@ -151,6 +154,7 @@ public class BossEnemyBehavior : MonoBehaviour
                 if (!collider_weapon_behavior.IsEnemyWeapon()) { // if is not an enemy weapon
                     health -= collider_weapon_behavior.GetDamage();
                     UIController.Instance.BossTakeDamage(collider_weapon_behavior.GetDamage());
+                    StartCoroutine(damage_effect());
                     if (health > 0) {
                         StartCoroutine(Knockback(collider));
                         // sprite_renderer.color /= 1.1f;
@@ -172,6 +176,12 @@ public class BossEnemyBehavior : MonoBehaviour
             }
         }
         
+    }
+
+    public IEnumerator damage_effect() {
+        sprite_renderer.material = red_mat;
+        yield return new WaitForSeconds(0.25f);
+        sprite_renderer.material = default_mat;
     }
 
     public virtual void OnTriggerExit2D(Collider2D collider) {

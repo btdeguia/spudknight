@@ -14,6 +14,8 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] protected GameObject stun_effect;
     [SerializeField] protected GameObject attack_indicator;
     [SerializeField] protected WeaponRigController weapon_rig;
+    [SerializeField] protected Material red_mat;
+    [SerializeField] protected Material default_mat;
 
     [Header("Enemy Settings")]
     [SerializeField] protected float speed;
@@ -26,11 +28,6 @@ public class EnemyBehavior : MonoBehaviour
     protected bool stunned = false;
     protected bool exit = false;
     protected bool knockback_active = false;
-
-    void Start()
-    {
-        FinanceController.Instance.SetCurrency(0);
-    }
 
     void Update()
     {
@@ -144,6 +141,7 @@ public class EnemyBehavior : MonoBehaviour
             if (collider_weapon_behavior != null) { // if is a weapon
                 if (!collider_weapon_behavior.IsEnemyWeapon()) { // if is not an enemy weapon
                     health -= collider_weapon_behavior.GetDamage();
+                    StartCoroutine(damage_effect());
                     if (health > 0) {
                         StartCoroutine(Knockback(collider));
                         // sprite_renderer.color /= 1.1f;
@@ -165,6 +163,13 @@ public class EnemyBehavior : MonoBehaviour
             }
         }
         
+    }
+
+    public IEnumerator damage_effect() {
+        Debug.Log("damge effect");
+        sprite_renderer.material = red_mat;
+        yield return new WaitForSeconds(0.25f);
+        sprite_renderer.material = default_mat;
     }
 
     public virtual void OnTriggerExit2D(Collider2D collider) {
