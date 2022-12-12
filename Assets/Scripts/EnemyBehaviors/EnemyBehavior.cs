@@ -60,6 +60,7 @@ public class EnemyBehavior : MonoBehaviour
     public virtual void Walk_Towards() {
         float distance_between = Vector3.Distance(transform.position, target.position);
         if (distance_between > distance_to_attack && !attacking && !stunned) {
+            Debug.Log("distance_between: " + distance_between);
             if (!walking) {
                 animator.SetBool("is_walking", true);
                 walking = true;

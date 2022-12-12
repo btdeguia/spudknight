@@ -100,13 +100,13 @@ public class PlayerBehavior : MonoBehaviour
     }
 
     private void block() {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && block_available) {
+        if (Input.GetMouseButtonDown(1) && block_available) {
             blocking = true;
             UIController.Instance.PressParryButton();
             update_shield();
             StartCoroutine(parry());
         }
-        if (Input.GetKeyUp(KeyCode.LeftShift) && blocking) {
+        if (Input.GetMouseButtonUp(1) && blocking) {
             blocking = false;
             UIController.Instance.ReleaseParryButton(1f);
             update_shield();
