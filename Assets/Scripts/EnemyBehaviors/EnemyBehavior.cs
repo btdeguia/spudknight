@@ -159,7 +159,7 @@ public class EnemyBehavior : MonoBehaviour
                 int currCurrency = FinanceController.Instance.GetCurrency();
                 int calculation = currCurrency + reward_amount;
                 FinanceController.Instance.SetCurrency(calculation);
-                UIController.Instance.SetCurrencyText();
+                UIController.Instance.GainCurrency(transform.position);
             }
         }
         

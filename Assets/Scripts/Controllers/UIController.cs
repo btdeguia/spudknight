@@ -7,12 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class UIController : Singleton<UIController>
 {
+    [SerializeField] private Canvas canvas;
     [Header("Hero Refs")]
     [SerializeField] private Slider hero_health_slider;
     [SerializeField] private RectTransform heart_mask;
     [SerializeField] private RectTransform heart_position;
+    
     [SerializeField] private TextMeshProUGUI hero_health_text;
     [SerializeField] private TextMeshProUGUI hero_currency_text;
+    [SerializeField] private RectTransform currency;
+    [SerializeField] private RectTransform small_currency;
     private int hero_health;
     private int max_hero_health;
     [Header("Ability Refs")]
@@ -208,5 +212,35 @@ public class UIController : Singleton<UIController>
         finalColor.a = 1;
         fade_bg.color = finalColor;
         SceneManager.LoadScene("StartMenu");
+    }
+
+    public void GainCurrency(Vector3 pos) {
+        Vector3 screenpoint = Camera.main.WorldToScreenPoint(pos);
+        screenpoint /= canvas.scaleFactor;
+        Debug.Log("screen point: " + screenpoint);
+        // Vector2 localPoint = Vector3.zero;
+        // RectTransform currency_rect = heart_position.parent.GetComponent<RectTransform>();
+        // RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(), screenpoint, Camera.main, out localPoint);
+        // Vector3 v3LocalPoint = localPoint;
+        Vector3 v3LocalPoint = new Vector3(screenpoint.x - (1920 / 2), screenpoint.y - (1080 / 2), 0);
+        Debug.Log("local point: " + v3LocalPoint);
+        StartCoroutine(currencyAnimation(v3LocalPoint));
+    }
+
+    private IEnumerator currencyAnimation(Vector3 pos) {
+        small_currency.gameObject.SetActive(true);
+        small_currency.anchoredPosition = pos;
+        Vector3 end_pos = new Vector3(-850, 258, 0);
+        yield return new WaitForSeconds(0.5f);
+        for (float i = 0; i < 1; i += 0.1f) {
+            small_currency.anchoredPosition = Vector3.Lerp(pos, end_pos, i);
+            yield return new WaitForSeconds(0.05f);
+        }
+        small_currency.anchoredPosition = end_pos;
+        small_currency.gameObject.SetActive(false);
+        currency.localScale = new Vector2(1.5f, 1.5f);
+        SetCurrencyText();
+        yield return new WaitForSeconds(0.25f);
+        currency.localScale = new Vector2(1f, 1f);
     }
 }
