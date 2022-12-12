@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIController : Singleton<UIController>
 {
@@ -30,13 +31,29 @@ public class UIController : Singleton<UIController>
     [SerializeField] private GameObject death_screen;
     [SerializeField] private GameObject btn_restart;
     [SerializeField] private GameObject win_screen;
+    [SerializeField] private Image fade_bg;
+    [Header("Boss Refs")]
     [SerializeField] private GameObject boss_screen;
     [SerializeField] private GameObject boss_attr;
     [SerializeField] private Slider boss_healthbar;
 
+    void OnEnable() {
+        StartCoroutine(startSequence());
+    }
+
+    private IEnumerator startSequence() {
+        yield return new WaitForSeconds(1f);
+        for (float i = 1; i > 0; i -= 0.1f) {
+            yield return new WaitForSeconds(0.01f);
+            Color tempColor = fade_bg.color;
+            tempColor.a = i;
+            fade_bg.color = tempColor;
+        }
+        fade_bg.gameObject.SetActive(false);
+    }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.M)) {
             if (menu_active) {
                 menu_active = false;
                 menu.SetActive(false);
@@ -155,5 +172,41 @@ public class UIController : Singleton<UIController>
 
     public void BossTakeDamage(int damage) {
         boss_healthbar.value -= damage;
+    }
+
+    public void PlayAgain() {
+        StartCoroutine(restartGame());
+    }
+
+    public void Quit() {
+        StartCoroutine(exitGame());
+    }
+
+        private IEnumerator restartGame() {
+        fade_bg.gameObject.SetActive(true);
+        for (float i = 0; i <= 1; i += 0.1f) {
+            yield return new WaitForSeconds(0.01f);
+            Color tempColor = fade_bg.color;
+            tempColor.a = i;
+            fade_bg.color = tempColor;
+        }
+        Color finalColor = fade_bg.color;
+        finalColor.a = 1;
+        fade_bg.color = finalColor;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+        private IEnumerator exitGame() {
+        fade_bg.gameObject.SetActive(true);
+        for (float i = 0; i <= 1; i += 0.1f) {
+            yield return new WaitForSeconds(0.01f);
+            Color tempColor = fade_bg.color;
+            tempColor.a = i;
+            fade_bg.color = tempColor;
+        }
+        Color finalColor = fade_bg.color;
+        finalColor.a = 1;
+        fade_bg.color = finalColor;
+        SceneManager.LoadScene("StartMenu");
     }
 }
