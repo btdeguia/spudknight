@@ -8,13 +8,13 @@ public class ChestController : MonoBehaviour
     [SerializeField] private GameObject dropped_item;
     [SerializeField] private GameObject open_sprite;
     [SerializeField] private GameObject closed_sprite;
+    [SerializeField] private TextMesh chest_text;
 
     [SerializeField] private bool within_open_dsitance = false;
     [SerializeField] private bool opened = false;
 
     void Update() {
         if (Input.GetKey(KeyCode.E) && !opened && within_open_dsitance) {
-            Debug.Log(weapon.transform.GetChild(0).GetComponent<WeaponBehavior>().GetCurrency());
             if (FinanceController.Instance.GetCurrency() >= weapon.transform.GetChild(0).GetComponent<WeaponBehavior>().GetCurrency())
             {
                 opened = true;
@@ -40,6 +40,8 @@ public class ChestController : MonoBehaviour
             PlayerBehavior behavior = collider.gameObject.GetComponent<PlayerBehavior>();
             if (behavior != null) {
                 within_open_dsitance = true; 
+                chest_text.gameObject.SetActive(true);
+                chest_text.text = "Fertilizer Required To Open: " + weapon.transform.GetChild(0).GetComponent<WeaponBehavior>().GetCurrency();
             }
         }
         
@@ -48,6 +50,7 @@ public class ChestController : MonoBehaviour
     public void OnTriggerExit2D(Collider2D collider) {
         if (!opened) {
             within_open_dsitance = false;
+            chest_text.gameObject.SetActive(false);
         }
     }
 }

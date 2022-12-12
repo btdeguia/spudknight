@@ -323,4 +323,4 @@ MonoBehaviour:
   ready: 0
   activated: 0
   eneme_swing: 0
-  currencyValue: 0
+  currencyValue: 15

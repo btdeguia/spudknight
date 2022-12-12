@@ -18,7 +18,6 @@ public class RogueEnemyBehavior : EnemyBehavior
 
     public override IEnumerator Attack()
     {
-        Debug.Log("rogue attack method");
         if (!base.stunned) {
            if (rogue_can_dash) {
                 base.attacking = true;
@@ -42,8 +41,8 @@ public class RogueEnemyBehavior : EnemyBehavior
     private IEnumerator rogue_dash() {
         // float lerp_distance = 0;
         Vector3 dash_target = new Vector3(base.target.position.x, base.target.position.y, 0);
-        Vector3 dash_overshoot = dash_target.normalized * 5f;
-        dash_target += dash_overshoot;
+        // Vector3 dash_overshoot = dash_target.normalized * 5f;
+        // dash_target += dash_overshoot;
 
         base.animator.SetBool("is_dashing", true);
         base.rigidbody_2d.freezeRotation = false;

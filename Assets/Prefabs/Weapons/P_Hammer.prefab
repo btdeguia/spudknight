@@ -162,7 +162,7 @@ MonoBehaviour:
   ready: 0
   activated: 0
   eneme_swing: 0
-  currencyValue: 25
+  currencyValue: 40
 --- !u!1 &7590096421369157353
 GameObject:
   m_ObjectHideFlags: 0

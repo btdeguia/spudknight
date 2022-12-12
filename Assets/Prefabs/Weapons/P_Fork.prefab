@@ -252,7 +252,9 @@ MonoBehaviour:
   knockback: 100
   end_lag: 0.25
   is_enemy_weapon: 0
-  message: One stabby boi
+  message: '<b>Weapon Acquired: Fork</b>
+
+    One stabby boi'
   charged: 0
   animator: {fileID: 0}
   charge_time: 0
@@ -265,7 +267,7 @@ MonoBehaviour:
   ready: 0
   activated: 0
   eneme_swing: 0
-  currencyValue: 0
+  currencyValue: 5
 --- !u!1 &9152352708809909074
 GameObject:
   m_ObjectHideFlags: 0

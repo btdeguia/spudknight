@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FinanceController : Singleton<FinanceController>
 {
-    protected int currency = 25;
+    protected int currency = 0;
     protected Vector2 weapon_pos = new Vector2(0.0f, 0.0f);
 
     public Vector2 GetWeaponPos()

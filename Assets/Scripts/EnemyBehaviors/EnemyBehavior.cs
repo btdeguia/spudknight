@@ -136,7 +136,7 @@ public class EnemyBehavior : MonoBehaviour
         //     // Physics2D.IgnoreCollision(collider_2d, collider.GetComponent<Collider>(), true);
         // }
         if (collider.gameObject.name != "P_Player" && collider.gameObject != weapon_behavior.gameObject && collider.gameObject.name[2] != 'E') {
-            //Debug.Log(collider.gameObject.name + " collided with " + gameObject.name);
+            // Debug.Log(collider.gameObject.name + " collided with " + gameObject.name);
             WeaponBehavior collider_weapon_behavior = collider.transform.parent.GetComponent<WeaponBehavior>();
             if (collider_weapon_behavior != null) { // if is a weapon
                 if (!collider_weapon_behavior.IsEnemyWeapon()) { // if is not an enemy weapon
@@ -166,7 +166,6 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     public IEnumerator damage_effect() {
-        Debug.Log("damge effect");
         sprite_renderer.material = red_mat;
         yield return new WaitForSeconds(0.25f);
         sprite_renderer.material = default_mat;
