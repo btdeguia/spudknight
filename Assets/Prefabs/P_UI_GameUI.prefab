@@ -378,6 +378,7 @@ MonoBehaviour:
   popup_text: {fileID: 5919693383023997128}
   popup_image: {fileID: 6219823803547493978}
   death_screen: {fileID: 6438544478116354839}
+  btn_restart: {fileID: 6286599518619391721, guid: 17007fa7575f62f468704c60963cac79, type: 3}
   win_screen: {fileID: 7617658119192141949}
   boss_screen: {fileID: 5856059842973096519}
   boss_attr: {fileID: 5036221566765254104}

@@ -60,7 +60,7 @@ public class EnemyBehavior : MonoBehaviour
     public virtual void Walk_Towards() {
         float distance_between = Vector3.Distance(transform.position, target.position);
         if (distance_between > distance_to_attack && !attacking && !stunned) {
-            Debug.Log("distance_between: " + distance_between);
+            //Debug.Log("distance_between: " + distance_between);
             if (!walking) {
                 animator.SetBool("is_walking", true);
                 walking = true;
@@ -116,10 +116,10 @@ public class EnemyBehavior : MonoBehaviour
             //weapon rig position - direction
             direction -= FinanceController.Instance.GetWeaponPos();
             //direction.Normalize();
-            Debug.Log(direction);
+            //Debug.Log(direction);
             // direction.Normalize(); // normalize it (left = positive, right = negative)
             float knockback = collider.transform.parent.GetComponent<WeaponBehavior>().GetKnockback(); // get knockback value from parent
-            Debug.Log("ONE WHO KNOCKS " + knockback);
+            //Debug.Log("ONE WHO KNOCKS " + knockback);
             rigidbody_2d.AddForce(direction * knockback * Time.smoothDeltaTime, ForceMode2D.Impulse);
             Vector3 dest = new Vector3(transform.position.x + direction.x, transform.position.y + direction.y, 0);
             

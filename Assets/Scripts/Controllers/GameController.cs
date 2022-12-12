@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using System;
 
@@ -27,7 +28,24 @@ public class GameController : Singleton<GameController>
     int pos = 0;
 
     // Start is called before the first frame update
-    void Start()
+    //void Start()
+    //{
+        
+
+
+    //}
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         hero = GameObject.Find("P_P_Player");
         // rogue = Instantiate(mRogue);
@@ -35,12 +53,11 @@ public class GameController : Singleton<GameController>
 
         // brute = Instantiate(mBrute);
         // brute.GetComponent<BruteEnemyBehavior>().Set_Attr(hero.transform);
-        
+
         // basic = Instantiate(mBasic);
         // basic.GetComponent<BasicEnemyBehavior>().Set_Attr(hero.transform);
-
-
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -74,6 +91,8 @@ public class GameController : Singleton<GameController>
     public GameObject GetHero() {
         return hero;
     }
+
+
 
     // private IEnumerator SpawnBasic() {
     //     yield return new WaitForSeconds(1f);

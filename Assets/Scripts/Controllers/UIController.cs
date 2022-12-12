@@ -28,6 +28,7 @@ public class UIController : Singleton<UIController>
     [SerializeField] private TextMeshProUGUI popup_text;
     [SerializeField] private Image popup_image;
     [SerializeField] private GameObject death_screen;
+    [SerializeField] private GameObject btn_restart;
     [SerializeField] private GameObject win_screen;
     [SerializeField] private GameObject boss_screen;
     [SerializeField] private GameObject boss_attr;
@@ -50,6 +51,8 @@ public class UIController : Singleton<UIController>
             }
         }
     }
+
+    
 
     public void HeroTakeDamage(int damage) {
         hero_health -= damage;
@@ -127,6 +130,7 @@ public class UIController : Singleton<UIController>
 
     public void ShowDeathScreen() {
         death_screen.SetActive(true);
+        btn_restart.SetActive(true);
     }
 
     public void ShowWinScreen() {

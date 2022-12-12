@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
@@ -167,7 +168,7 @@ public class PlayerBehavior : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D collider) {
-            Debug.Log("triggered with " + collider.gameObject.name);
+            //Debug.Log("triggered with " + collider.gameObject.name);
             if (collider.gameObject.name[2] == 'E') { // contact damage
                 if (parrying) {
                     collider.gameObject.GetComponent<EnemyBehavior>().Parried();
@@ -213,7 +214,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private void death() {
         UIController.Instance.ShowDeathScreen();
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {

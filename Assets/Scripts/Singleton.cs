@@ -16,6 +16,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour {
 			Debug.Log("Destroying other instance");
 			Destroy(FindObjectOfType<T>());
 		}
-		DontDestroyOnLoad(FindObjectOfType<T>());
+		//DontDestroyOnLoad(FindObjectOfType<T>());
 	}
 }
