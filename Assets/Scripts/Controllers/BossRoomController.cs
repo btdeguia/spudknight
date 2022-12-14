@@ -8,23 +8,32 @@ public class BossRoomController : MonoBehaviour
 {
     [SerializeField] private GameObject boss;
     [SerializeField] private Collider2D collider_2d;
+    [SerializeField] private GameObject wall;
+    private bool spawned = false;
+    private bool dead = false;
+    private void Update()
+    {
+        if (dead) {
+            wall.SetActive(false);
+        }
+    }
 
-    private bool locked = false;
+    public void bossDead()
+    {
+        dead = true;
+    }
 
     void OnCollisionEnter2D(Collision2D collision) {
         Debug.Log(collision.gameObject.name + " encountered the gate ");
         if (collision.gameObject.name[2] == 'P') {
-            if (!locked) {
+            if (!spawned) {
                 Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), collider_2d);
                 StartCoroutine(StartBossFight());
+                wall.SetActive(true);
+                spawned = true;
             }
             
         }
-    }
-
-    void OnCollisionExit2D(Collision2D collision) {
-        Debug.Log("collision exit");
-        locked = true;
     }
 
     private IEnumerator StartBossFight() {
@@ -32,5 +41,6 @@ public class BossRoomController : MonoBehaviour
         UIController.Instance.ShowBossScreen();
         yield return new WaitForSecondsRealtime(5f);
         boss.SetActive(true);
+        boss.GetComponent<BossEnemyBehavior>().SetSpawner(gameObject);
     }
 }

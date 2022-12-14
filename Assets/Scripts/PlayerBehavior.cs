@@ -225,7 +225,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private void death() {
         UIController.Instance.ShowDeathScreen();
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {

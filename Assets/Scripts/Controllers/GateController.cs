@@ -14,10 +14,12 @@ public class GateController : MonoBehaviour
     [SerializeField] private List<EnemySpawnPoint> enemies_in_room = new List<EnemySpawnPoint>();
     [SerializeField] private GameObject weapon_rig;
     [SerializeField] private Collider2D collider_2d;
+    [SerializeField] private GameObject[] walls;
 
     [SerializeField] private Transform room;
 
-    private bool locked = false;
+    private bool spawned = false;
+    private int dead = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +28,24 @@ public class GateController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (dead == enemies_in_room.Count) {
+            setWalls(false);
+        }
+    }
+
+    public void addToDead() {
+        dead++;
     }
 
     public void SpawnEnemies() {
         for (int i = 0; i < enemies_in_room.Count; i++) {
             SpawnEnemy(enemies_in_room[i]);
+        }
+    }
+
+    public void setWalls(bool state) {
+        for (int i = 0; i < walls.Length; i++) {
+            walls[i].SetActive(state);
         }
     }
 
@@ -49,21 +63,23 @@ public class GateController : MonoBehaviour
         WeaponRigController controller = weapon_rig_obj.GetComponent<WeaponRigController>();
         controller.Set_Attr(enemy.weapon_prefab, enemy_obj.transform, enemy_behavior, true);
         enemy_behavior.SetWeaponRig(controller);
+        enemy_behavior.SetSpawner(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
         Debug.Log(collision.gameObject.name + " encountered the gate ");
         if (collision.gameObject.name[2] == 'P') {
-            if (!locked) {
+            if (!spawned) {
                 Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), collider_2d);
+                setWalls(true);
                 SpawnEnemies();
+                spawned = true;
             }
-            
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision) {
-        Debug.Log("collision exit");
-        locked = true;
-    }
+    //void OnCollisionExit2D(Collision2D collision) {
+        //Debug.Log("collision exit");
+        //locked = true;
+    //}
 }

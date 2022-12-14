@@ -28,6 +28,7 @@ public class EnemyBehavior : MonoBehaviour
     protected bool stunned = false;
     protected bool exit = false;
     protected bool knockback_active = false;
+    protected GameObject spawner = null;
 
     void Update()
     {
@@ -44,6 +45,10 @@ public class EnemyBehavior : MonoBehaviour
 
     public virtual void SetWeapon(WeaponBehavior weapon) {
         weapon_behavior = weapon;
+    }
+
+    public virtual void SetSpawner(GameObject gate) {
+        spawner = gate;
     }
 
     public virtual Transform GetTarget() {
@@ -100,6 +105,7 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     public virtual void Death() {
+        spawner.GetComponent<GateController>().addToDead();
         StopAllCoroutines();
         Destroy(weapon_rig.gameObject);
         Destroy(gameObject);

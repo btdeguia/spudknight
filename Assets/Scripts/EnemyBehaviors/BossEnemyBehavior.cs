@@ -30,6 +30,7 @@ public class BossEnemyBehavior : MonoBehaviour
     private bool exit = false;
     private bool knockback_active = false;
     private bool summon_available = true;
+    protected GameObject spawner = null;
 
     [Header("Minion Settings")]
     [SerializeField] private int summon_cooldown;
@@ -60,6 +61,11 @@ public class BossEnemyBehavior : MonoBehaviour
 
     public virtual void SetWeapon(WeaponBehavior weapon) {
         weapon_behavior = weapon;
+    }
+
+    public virtual void SetSpawner(GameObject gate)
+    {
+        spawner = gate;
     }
 
     public virtual Transform GetTarget() {
@@ -127,6 +133,7 @@ public class BossEnemyBehavior : MonoBehaviour
     }
 
     public virtual void Death() {
+        spawner.GetComponent<BossRoomController>().bossDead();
         StopAllCoroutines();
         // Destroy(weapon_rig.gameObject);
         Destroy(gameObject);
