@@ -26,8 +26,11 @@ public class UIController : Singleton<UIController>
     [Header("Menu Refs")]
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject menu_text;
+    [SerializeField] private GameObject credits_screen;
     private bool menu_active = false;
     private float temp_time_scale;
+
+    private GameObject last_page = null;
     [Header("Other Refs")]
     [SerializeField] private GameObject popup_box;
     [SerializeField] private TextMeshProUGUI popup_text;
@@ -186,24 +189,28 @@ public class UIController : Singleton<UIController>
         StartCoroutine(exitGame());
     }
 
-        private IEnumerator restartGame() {
+    private IEnumerator restartGame() {
         fade_bg.gameObject.SetActive(true);
         for (float i = 0; i <= 1; i += 0.1f) {
-            yield return new WaitForSeconds(0.01f);
+            Debug.Log(i);
+            yield return new WaitForSecondsRealtime(0.01f);
             Color tempColor = fade_bg.color;
             tempColor.a = i;
             fade_bg.color = tempColor;
+            Debug.Log("end of loop");
         }
         Color finalColor = fade_bg.color;
         finalColor.a = 1;
         fade_bg.color = finalColor;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        yield return null;
     }
 
-        private IEnumerator exitGame() {
+    private IEnumerator exitGame() {
         fade_bg.gameObject.SetActive(true);
         for (float i = 0; i <= 1; i += 0.1f) {
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSecondsRealtime(0.01f);
             Color tempColor = fade_bg.color;
             tempColor.a = i;
             fade_bg.color = tempColor;
@@ -211,6 +218,7 @@ public class UIController : Singleton<UIController>
         Color finalColor = fade_bg.color;
         finalColor.a = 1;
         fade_bg.color = finalColor;
+        Time.timeScale = 1f;
         SceneManager.LoadScene("StartMenu");
     }
 
@@ -242,5 +250,18 @@ public class UIController : Singleton<UIController>
         SetCurrencyText();
         yield return new WaitForSeconds(0.25f);
         currency.localScale = new Vector2(1f, 1f);
+    }
+
+    public void BackButton() {
+        if (last_page != null) {
+            credits_screen.SetActive(false);
+            last_page.SetActive(true);
+        }
+    }
+
+    public void ViewCredits(GameObject close) {
+        last_page = close;
+        last_page.SetActive(false);
+        credits_screen.SetActive(true);
     }
 }
