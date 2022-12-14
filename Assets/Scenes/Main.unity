@@ -1428,6 +1428,7 @@ GameObject:
   - component: {fileID: 570411838}
   - component: {fileID: 570411837}
   - component: {fileID: 570411841}
+  - component: {fileID: 570411842}
   m_Layer: 0
   m_Name: Tilemap (1)
   m_TagString: Untagged
@@ -4876,6 +4877,22 @@ CompositeCollider2D:
       - {x: 62.01003, y: -91.06}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
+--- !u!114 &570411842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570411834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1001 &650950656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6143,6 +6160,7 @@ GameObject:
   - component: {fileID: 897931035}
   - component: {fileID: 897931034}
   - component: {fileID: 897931036}
+  - component: {fileID: 897931037}
   m_Layer: 0
   m_Name: Tilemap
   m_TagString: Untagged
@@ -16095,6 +16113,22 @@ CompositeCollider2D:
       - {x: 70.94, y: -91.970505}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
+--- !u!114 &897931037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897931029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!114 &911102607 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7013505031882561766, guid: befbf12b7c394ef45997af80085e69bf, type: 3}
@@ -16215,6 +16249,72 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2100483650406335816, guid: 073d685c2e0716243a2190b3bff457e6, type: 3}
   m_PrefabInstance: {fileID: 1063269754}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1063362942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1063362944}
+  - component: {fileID: 1063362943}
+  m_Layer: 0
+  m_Name: NavMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1063362943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063362942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148387606d0ccd84fa326ca211f274ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_OverrideByGrid: 0
+  m_UseMeshPrefab: {fileID: 0}
+  m_CompressBounds: 0
+  m_OverrideVector: {x: 1, y: 1, z: 1}
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_HideEditorLogs: 0
+  m_NavMeshData: {fileID: 23800000, guid: 96199051ce87aec439add0081edc5292, type: 2}
+--- !u!4 &1063362944
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063362942}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1001 &1085937355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18487,7 +18587,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -561420311
-  m_SortingLayer: -1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 071e118e875cfe14495feeb5b16aa5b3, type: 3}
   m_Color: {r: 0.11320752, g: 0.103061564, b: 0.103061564, a: 1}
