@@ -12,6 +12,7 @@ public class WeaponBehavior : MonoBehaviour
     [SerializeField] private SpriteRenderer idle_renderer;
     [SerializeField] private SpriteRenderer active_renderer;
     [SerializeField] private PolygonCollider2D collider;
+    [SerializeField] private AudioSource audio_source;
 
     [Header("Weapon Attributes")]
     [SerializeField] private int damage;
@@ -19,9 +20,11 @@ public class WeaponBehavior : MonoBehaviour
     [SerializeField] private float knockback;
     [SerializeField] private float end_lag;
     [SerializeField] private bool is_enemy_weapon;
+    // [SerializeField] private AudioClip audioClip;
     [Multiline]
     [SerializeField] private string message;
     private bool weapon_box_set = false;
+    private AudioSource audioSource;
 
     [Header("Charged Weapon Attributes")]
     [SerializeField] private bool charged;
@@ -39,6 +42,14 @@ public class WeaponBehavior : MonoBehaviour
     [SerializeField] private bool activated = false;
     [SerializeField] private bool eneme_swing = false;
     [SerializeField] protected int currencyValue = 0;
+
+    private AudioSource m_MyAudioSource;
+
+    /*void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioClip = Resources.Load<AudioClip>(audioClip.name);
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -137,6 +148,10 @@ public class WeaponBehavior : MonoBehaviour
     // }
 
     private IEnumerator swing_weapon() {
+
+        //audioSource.clip = audioClip;
+        //Debug.Log(audioClip);
+        audio_source.Play();
         activated = true;
         weapon_idle.SetActive(false);
         idle_renderer.sprite = base_image;
