@@ -231,18 +231,15 @@ public class PlayerBehavior : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision) {
         Debug.Log("collided with " + collision.gameObject.name);
         if (collision.gameObject.name[2] == 'E') {
-            rigidbody_2d.velocity = Vector2.zero;
-            if (blocking || parrying ) {
-                Physics2D.IgnoreCollision(collider_2d, collision.gameObject.GetComponent<Collider2D>());
-            } else {
-                Debug.Log("ignoring collision");
-                health --;
-                UIController.Instance.HeroTakeDamage(1);
-            }
-            
-            
-            
-            
+            // rigidbody_2d.velocity = Vector2.zero;
+            // if (blocking || parrying ) {
+            //     Physics2D.IgnoreCollision(collider_2d, collision.gameObject.GetComponent<Collider2D>());
+            // } else {
+            //     Debug.Log("ignoring collision");
+            //     health --;
+            //     UIController.Instance.HeroTakeDamage(1);
+            // }
+            Physics2D.IgnoreCollision(collider_2d, collision.gameObject.GetComponent<Collider2D>());
         }
     }
 

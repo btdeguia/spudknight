@@ -197,11 +197,14 @@ MonoBehaviour:
   weapon_rig: {fileID: 0}
   red_mat: {fileID: 2100000, guid: af6cdad906b8d224cad6190d1de62fe8, type: 2}
   default_mat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  speed: 1
+  speed: 5
   health: 5
   distance_to_attack: 2.75
   reward_amount: 5
   attacking: 0
+  slime_prefab: {fileID: 6577319643478984991}
+  mitosis_sprite: {fileID: 21300000, guid: 3c9ba53e76ba75445853b93d87378a46, type: 3}
+  default_sprite: {fileID: 21300000, guid: b83fe66b7add47443b090e976431ac67, type: 3}
 --- !u!95 &7690077637660213471
 Animator:
   serializedVersion: 4

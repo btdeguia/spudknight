@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class SlimeEnemyBehavior : EnemyBehavior
 {
+    [SerializeField] private GameObject slime_prefab;
+    [SerializeField] private Sprite mitosis_sprite;
+    [SerializeField] private Sprite default_sprite;
     private bool slime_can_jump = true;    
+
+    private bool can_mitosis = true;
 
     public override IEnumerator Attack()
     {
@@ -85,9 +90,44 @@ public class SlimeEnemyBehavior : EnemyBehavior
         
     }
 
+    public void SetMitosisFalse() {
+        can_mitosis = false;
+    }
+
     public override void Death() {
-        spawner.GetComponent<GateController>().addToDead();
+        base.sprite_renderer.material = base.default_mat;
         StopAllCoroutines();
+        if (can_mitosis) {
+            spawner.GetComponent<GateController>().addToDead();
+            StartCoroutine(mitosis());
+        } else {
+            Destroy(gameObject);
+        }
+        
+    }
+
+    private IEnumerator mitosis() {
+        stunned = true;
+        base.animator.enabled = false;
+        base.sprite_renderer.sprite = mitosis_sprite;
+        yield return new WaitForSeconds(1f);
+
+        GameObject hero = GameController.Instance.GetHero();
+
+        Vector3 enemy_local_pos = transform.position;
+
+        slime_prefab = (GameObject) Resources.Load("P_E_Slime");
+
+        GameObject slime_1 = Instantiate(slime_prefab, new Vector3(enemy_local_pos.x - 1, enemy_local_pos.y, 0), new Quaternion(0, 0, 0, 0));
+        GameObject slime_2 = Instantiate(slime_prefab, new Vector3(enemy_local_pos.x + 1, enemy_local_pos.y, 0), new Quaternion(0, 0, 0, 0));
+        SlimeEnemyBehavior slime_behavior_1 = slime_1.GetComponent<SlimeEnemyBehavior>();
+        SlimeEnemyBehavior slime_behavior_2 = slime_2.GetComponent<SlimeEnemyBehavior>();
+        slime_behavior_1.SetTarget(hero.transform);
+        slime_behavior_2.SetTarget(hero.transform);
+        slime_behavior_1.SetMitosisFalse();
+        slime_behavior_2.SetMitosisFalse();
+        slime_1.transform.localScale = new Vector2(0.75f, 0.75f);
+        slime_2.transform.localScale = new Vector2(0.75f, 0.75f);
         Destroy(gameObject);
     }
 }
