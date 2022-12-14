@@ -59,10 +59,13 @@ public class GateController : MonoBehaviour
         GameObject enemy_obj = Instantiate(enemy.enemy_prefab, enemy_local_pos, new Quaternion(0, 0, 0, 0));
         EnemyBehavior enemy_behavior = enemy_obj.GetComponent<EnemyBehavior>();
         enemy_behavior.SetTarget(hero.transform);
-        GameObject weapon_rig_obj = Instantiate(weapon_rig);
-        WeaponRigController controller = weapon_rig_obj.GetComponent<WeaponRigController>();
-        controller.Set_Attr(enemy.weapon_prefab, enemy_obj.transform, enemy_behavior, true);
-        enemy_behavior.SetWeaponRig(controller);
+        if (enemy.weapon_prefab != null) {
+            GameObject weapon_rig_obj = Instantiate(weapon_rig);
+            WeaponRigController controller = weapon_rig_obj.GetComponent<WeaponRigController>();
+            controller.Set_Attr(enemy.weapon_prefab, enemy_obj.transform, enemy_behavior, true);
+            enemy_behavior.SetWeaponRig(controller);
+        }
+        ;
         enemy_behavior.SetSpawner(gameObject);
     }
 

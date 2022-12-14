@@ -54,6 +54,8 @@ MonoBehaviour:
     weapon_prefab: {fileID: 7590096421369157353, guid: 9a612c48d3819fa41a9544dfae2e5400, type: 3}
   - enemy_prefab: {fileID: 6577319643478984991, guid: a60bb653cb7f743419cc11341a806a93, type: 3}
     weapon_prefab: {fileID: 4801101531447809085, guid: 50d493676562cf042bc10cd418e731de, type: 3}
+  - enemy_prefab: {fileID: 6577319643478984991, guid: f0ea456a2a3aaec41874a3d5930c3069, type: 3}
+    weapon_prefab: {fileID: 0}
   mWeaponRig: {fileID: 8876301115303308783, guid: 848b46ba9889d5b46ba2e65ddf9ab2ec, type: 3}
   mHero: {fileID: 0}
 --- !u!114 &1932219694013232195

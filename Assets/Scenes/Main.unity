@@ -17806,6 +17806,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7260284703256305485, guid: f0ea456a2a3aaec41874a3d5930c3069, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1725813862246601456, guid: f0ea456a2a3aaec41874a3d5930c3069, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -17853,6 +17857,10 @@ PrefabInstance:
     - target: {fileID: 6577319643478984991, guid: f0ea456a2a3aaec41874a3d5930c3069, type: 3}
       propertyPath: m_Name
       value: P_E_Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577319643478984991, guid: f0ea456a2a3aaec41874a3d5930c3069, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7545282815790640649, guid: f0ea456a2a3aaec41874a3d5930c3069, type: 3}
       propertyPath: target
@@ -18152,7 +18160,7 @@ PrefabInstance:
       objectReference: {fileID: 1443412044}
     - target: {fileID: 7607425091638369131, guid: ef805728e6295114f8d9188e34a6de49, type: 3}
       propertyPath: enemies_in_room.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7607425091638369131, guid: ef805728e6295114f8d9188e34a6de49, type: 3}
       propertyPath: enemies_in_room.Array.data[0].pos.x
@@ -18181,6 +18189,18 @@ PrefabInstance:
     - target: {fileID: 7607425091638369131, guid: ef805728e6295114f8d9188e34a6de49, type: 3}
       propertyPath: enemies_in_room.Array.data[2].pos.y
       value: -21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607425091638369131, guid: ef805728e6295114f8d9188e34a6de49, type: 3}
+      propertyPath: enemies_in_room.Array.data[3].index
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607425091638369131, guid: ef805728e6295114f8d9188e34a6de49, type: 3}
+      propertyPath: enemies_in_room.Array.data[3].pos.x
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607425091638369131, guid: ef805728e6295114f8d9188e34a6de49, type: 3}
+      propertyPath: enemies_in_room.Array.data[3].pos.y
+      value: -35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef805728e6295114f8d9188e34a6de49, type: 3}

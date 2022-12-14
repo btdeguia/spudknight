@@ -45,4 +45,49 @@ public class SlimeEnemyBehavior : EnemyBehavior
         yield return new WaitForSeconds(2.5f);
         slime_can_jump = true;
     }
+
+    public override void OnTriggerEnter2D(Collider2D collider) {
+        // if:
+        // not collided with player
+        // not the weapon this object is holding
+        // not collided with another enemy
+        // if (collider.gameObject.name[2] != 'W') {
+        //     return;
+        //     // Physics2D.IgnoreCollision(collider_2d, collider.GetComponent<Collider>(), true);
+        // }
+        if (collider.gameObject.name != "P_Player" && collider.gameObject.name[2] != 'E') {
+            // Debug.Log(collider.gameObject.name + " collided with " + gameObject.name);
+            WeaponBehavior collider_weapon_behavior = collider.transform.parent.GetComponent<WeaponBehavior>();
+            if (collider_weapon_behavior != null) { // if is a weapon
+                if (!collider_weapon_behavior.IsEnemyWeapon()) { // if is not an enemy weapon
+                    base.health -= collider_weapon_behavior.GetDamage();
+                    StartCoroutine(base.damage_effect());
+                    if (health > 0) {
+                        StartCoroutine(base.Knockback(collider));
+                        // sprite_renderer.color /= 1.1f;
+                        StartCoroutine(base.Hitstun()); 
+                    }
+                    
+                }
+            } else { // else is not a weapon, probably contact damage
+                base.health--;
+                // sprite_renderer.color /= 1.1f;
+                // StartCoroutine(Hitstun()); 
+            }
+            if (health <= 0) {
+                Death();
+                int currCurrency = FinanceController.Instance.GetCurrency();
+                int calculation = currCurrency + reward_amount;
+                FinanceController.Instance.SetCurrency(calculation);
+                UIController.Instance.GainCurrency(transform.position);
+            }
+        }
+        
+    }
+
+    public override void Death() {
+        spawner.GetComponent<GateController>().addToDead();
+        StopAllCoroutines();
+        Destroy(gameObject);
+    }
 }
