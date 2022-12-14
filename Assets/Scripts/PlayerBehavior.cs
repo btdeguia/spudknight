@@ -172,7 +172,7 @@ public class PlayerBehavior : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D collider) {
-            //Debug.Log("triggered with " + collider.gameObject.name);
+            Debug.Log("triggered with " + collider.gameObject.name);
             if (collider.gameObject.name[2] == 'E') { // contact damage
                 if (parrying) {
                     collider.gameObject.GetComponent<EnemyBehavior>().Parried();
@@ -231,9 +231,18 @@ public class PlayerBehavior : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision) {
         Debug.Log("collided with " + collision.gameObject.name);
         if (collision.gameObject.name[2] == 'E') {
-            Debug.Log("ignoring collision");
             rigidbody_2d.velocity = Vector2.zero;
-            Physics2D.IgnoreCollision(collider_2d, collision.gameObject.GetComponent<Collider2D>());
+            if (blocking || parrying ) {
+                Physics2D.IgnoreCollision(collider_2d, collision.gameObject.GetComponent<Collider2D>());
+            } else {
+                Debug.Log("ignoring collision");
+                health --;
+                UIController.Instance.HeroTakeDamage(1);
+            }
+            
+            
+            
+            
         }
     }
 

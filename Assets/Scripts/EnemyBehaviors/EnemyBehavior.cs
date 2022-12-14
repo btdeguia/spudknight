@@ -171,6 +171,14 @@ public class EnemyBehavior : MonoBehaviour
         
     }
 
+    public void OnCollisionEnter2D(Collision2D collision) {
+        Debug.Log("collided with " + collision.gameObject.name);
+        if (collision.gameObject.name[2] == 'E' || collision.gameObject.name[2] == 'P') {
+            Physics2D.IgnoreCollision(collider_2d, collision.gameObject.GetComponent<Collider2D>(), true);
+            Physics2D.IgnoreCollision(collider_2d, collision.gameObject.GetComponent<Collider2D>(), false);
+        }
+    }
+
     public IEnumerator damage_effect() {
         sprite_renderer.material = red_mat;
         yield return new WaitForSeconds(0.25f);
