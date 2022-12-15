@@ -9,6 +9,7 @@ public class BossRoomController : MonoBehaviour
     [SerializeField] private GameObject boss;
     [SerializeField] private Collider2D collider_2d;
     [SerializeField] private GameObject wall;
+    [SerializeField] private GameObject gate;
     [SerializeField] private AudioClip audioClip;
     private bool spawned = false;
     private bool dead = false;
@@ -31,6 +32,7 @@ public class BossRoomController : MonoBehaviour
                 Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), collider_2d);
                 StartCoroutine(StartBossFight());
                 wall.SetActive(true);
+                gate.SetActive(false);
                 spawned = true;
             }
             

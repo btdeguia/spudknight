@@ -15,8 +15,13 @@ public class GateController : MonoBehaviour
     [SerializeField] private GameObject weapon_rig;
     [SerializeField] private Collider2D collider_2d;
     [SerializeField] private GameObject[] walls;
+    [SerializeField] private GameObject[] gates;
 
     [SerializeField] private Transform room;
+
+    [SerializeField] private Sprite closed_sprite;
+    [SerializeField] private Sprite open_sprite;
+    [SerializeField] private SpriteRenderer sprite_renderer;
 
     private bool spawned = false;
     private int dead = 0;
@@ -47,6 +52,7 @@ public class GateController : MonoBehaviour
     public void setWalls(bool state) {
         for (int i = 0; i < walls.Length; i++) {
             walls[i].SetActive(state);
+            gates[i].SetActive(!state);
         }
     }
 
