@@ -283,7 +283,7 @@ MonoBehaviour:
   red_mat: {fileID: 2100000, guid: af6cdad906b8d224cad6190d1de62fe8, type: 2}
   default_mat: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   speed: 2
-  health: 3
+  health: 5
   distance_to_attack: 2.75
   reward_amount: 0
   attacking: 0

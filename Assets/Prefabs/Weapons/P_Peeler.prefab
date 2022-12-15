@@ -366,7 +366,7 @@ MonoBehaviour:
   active_renderer: {fileID: 2973385621352920547}
   collider: {fileID: 6441130558190100006}
   audio_source: {fileID: 6058629210708218810}
-  damage: 1
+  damage: 3
   distance: 1.25
   knockback: 200
   end_lag: 0.25

@@ -13,6 +13,12 @@ public class ChestController : MonoBehaviour
     [SerializeField] private bool within_open_dsitance = false;
     [SerializeField] private bool opened = false;
 
+    void OnEnable() {
+
+        int weapon_pos = Random.Range(1, GameController.Instance.GetWeaponListSize());
+        weapon = GameController.Instance.GetWeaponFromList(weapon_pos);
+    }
+    
     void Update() {
         if (Input.GetKey(KeyCode.E) && !opened && within_open_dsitance) {
             if (FinanceController.Instance.GetCurrency() >= weapon.transform.GetChild(0).GetComponent<WeaponBehavior>().GetCurrency())
@@ -20,6 +26,7 @@ public class ChestController : MonoBehaviour
                 opened = true;
                 open_sprite.SetActive(true);
                 closed_sprite.SetActive(false);
+                chest_text.gameObject.SetActive(false);
                 GameObject item = Instantiate(dropped_item, transform.position, new Quaternion(0, 0, 0, 0));
                 item.GetComponent<DroppedItemBehavior>().SetWeapon(weapon);
                 FinanceController.Instance.BuyWeapon(weapon);

@@ -14,6 +14,7 @@ public class GameController : Singleton<GameController>
 {
     
     [SerializeField] private List<Enemy> enemy_list = new List<Enemy>();
+    [SerializeField] private List<GameObject> weapon_list = new List<GameObject>();
     // Everytime an enemy dies, make a new one
     [SerializeField] private GameObject mWeaponRig;
     [SerializeField] private GameObject mHero;
@@ -26,14 +27,6 @@ public class GameController : Singleton<GameController>
     private GameObject[] weapons;
     private GameObject enemy;
     int pos = 0;
-
-    // Start is called before the first frame update
-    //void Start()
-    //{
-        
-
-
-    //}
 
     void OnEnable()
     {
@@ -48,36 +41,14 @@ public class GameController : Singleton<GameController>
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         hero = GameObject.Find("P_P_Player");
-        // rogue = Instantiate(mRogue);
-        // rogue.GetComponent<RogueEnemyBehavior>().Set_Attr(hero.transform);
-
-        // brute = Instantiate(mBrute);
-        // brute.GetComponent<BruteEnemyBehavior>().Set_Attr(hero.transform);
-
-        // basic = Instantiate(mBasic);
-        // basic.GetComponent<BasicEnemyBehavior>().Set_Attr(hero.transform);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // if (enemy == null) {
-        //     enemy = Instantiate(enemy_list[pos].enemy_prefab);
-        //     EnemyBehavior enemy_behavior = enemy.GetComponent<EnemyBehavior>();
-        //     enemy_behavior.SetTarget(hero.transform);
-        //     GameObject weapon_rig = Instantiate(mWeaponRig);
-        //     WeaponRigController controller = weapon_rig.GetComponent<WeaponRigController>();
-        //     controller.Set_Attr(enemy_list[pos].weapon_prefab, enemy.transform, enemy_behavior, true);
-        //     enemy_behavior.SetWeaponRig(controller);
-        //     pos++;
-        //     if (pos == enemy_list.Count) {
-        //         pos = 0;
-        //     }
-        // }
+    public int GetWeaponListSize() {
+        return weapon_list.Count;
     }
 
     public GameObject GetWeaponFromList(int pos) {
-        return enemy_list[pos].weapon_prefab;
+        return weapon_list[pos];
     }
 
     public GameObject GetEnemyFromList(int pos) {
@@ -91,24 +62,4 @@ public class GameController : Singleton<GameController>
     public GameObject GetHero() {
         return hero;
     }
-
-
-
-    // private IEnumerator SpawnBasic() {
-    //     yield return new WaitForSeconds(1f);
-    //     basic = Instantiate(mBasic);
-    //     basic.GetComponent<BasicEnemyBehavior>().Set_Attr(hero.transform);
-    // }
-
-    // private IEnumerator SpawnRogue() {
-    //     yield return new WaitForSeconds(1f);
-    //     rogue = Instantiate(mRogue);
-    //     rogue.GetComponent<RogueEnemyBehavior>().Set_Attr(hero.transform);
-    // }
-
-    // private IEnumerator SpawnBrute() {
-    //     yield return new WaitForSeconds(1f);
-    //     brute = Instantiate(mBrute);
-    //     brute.GetComponent<BruteEnemyBehavior>().Set_Attr(hero.transform);
-    // }
 }
