@@ -105,7 +105,7 @@ public class EnemyBehavior : MonoBehaviour
     }
 
     public virtual void Death() {
-        spawner.GetComponent<GateController>().addToDead();
+        if (gameObject.name.Substring(0, 7) != "P_E_Fry") spawner.GetComponent<GateController>().addToDead();
         StopAllCoroutines();
         Destroy(weapon_rig.gameObject);
         Destroy(gameObject);
