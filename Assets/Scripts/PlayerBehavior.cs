@@ -180,6 +180,7 @@ public class PlayerBehavior : MonoBehaviour
                 if (!blocking) {
                     health--; 
                     UIController.Instance.HeroTakeDamage(1);
+                    StartCoroutine(damage_effect());
                 }
             }
             if (collider.transform.parent != null) {

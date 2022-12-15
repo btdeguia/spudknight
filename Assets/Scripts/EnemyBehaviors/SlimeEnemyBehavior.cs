@@ -8,7 +8,7 @@ public class SlimeEnemyBehavior : EnemyBehavior
     [SerializeField] private Sprite mitosis_sprite;
     [SerializeField] private Sprite default_sprite;
     private bool slime_can_jump = true;    
-
+    private bool isDead = false;
     private bool can_mitosis = true;
 
     public override IEnumerator Attack()
@@ -60,7 +60,9 @@ public class SlimeEnemyBehavior : EnemyBehavior
         //     return;
         //     // Physics2D.IgnoreCollision(collider_2d, collider.GetComponent<Collider>(), true);
         // }
-        if (collider.gameObject.name != "P_Player" && collider.gameObject.name[2] != 'E') {
+        if (isDead) return;
+        Debug.Log("Slime hit: by " + collider.gameObject.name);
+        if (collider.gameObject.name != "P_P_Player" && collider.gameObject.name[2] != 'E') {
             // Debug.Log(collider.gameObject.name + " collided with " + gameObject.name);
             WeaponBehavior collider_weapon_behavior = collider.transform.parent.GetComponent<WeaponBehavior>();
             if (collider_weapon_behavior != null) { // if is a weapon
@@ -95,9 +97,12 @@ public class SlimeEnemyBehavior : EnemyBehavior
     }
 
     public override void Death() {
+        isDead = true;
+        base.rigidbody_2d.velocity = Vector2.zero;
         base.sprite_renderer.material = base.default_mat;
         StopAllCoroutines();
         if (can_mitosis) {
+            Debug.Log(gameObject.name);
             spawner.GetComponent<GateController>().addToDead();
             StartCoroutine(mitosis());
         } else {

@@ -35,6 +35,7 @@ public class GateController : MonoBehaviour
 
     public void addToDead() {
         dead++;
+        Debug.Log("dying: " + dead + " / " + enemies_in_room.Count);
     }
 
     public void SpawnEnemies() {
