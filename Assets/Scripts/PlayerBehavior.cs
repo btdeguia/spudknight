@@ -82,11 +82,11 @@ public class PlayerBehavior : MonoBehaviour
         difference.Normalize();
         float mouse_pos_y = difference.y;
         float mouse_pos_x = difference.x;
-        if (mouse_pos_y > 0 && facing_back) {
+        if (mouse_pos_y < 0 && facing_back) {
             animator.SetTrigger("switch_facing");
             facing_back = false;
         }
-        if (mouse_pos_y < 0 && !facing_back) {
+        if (mouse_pos_y > 0 && !facing_back) {
             animator.SetTrigger("switch_facing");
             facing_back = true;
         }
