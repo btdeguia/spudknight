@@ -18860,7 +18860,7 @@ PrefabInstance:
     - target: {fileID: 2344385606629588563, guid: 848b46ba9889d5b46ba2e65ddf9ab2ec, type: 3}
       propertyPath: internal_weapon_list.Array.data[0]
       value: 
-      objectReference: {fileID: 1427912168}
+      objectReference: {fileID: 4801101531447809085, guid: eddb7bc7336ef264cae9b2d27aa3a56b, type: 3}
     - target: {fileID: 2344385606629588563, guid: 848b46ba9889d5b46ba2e65ddf9ab2ec, type: 3}
       propertyPath: internal_weapon_list.Array.data[1]
       value: 
@@ -18872,7 +18872,7 @@ PrefabInstance:
     - target: {fileID: 2344385606629588563, guid: 848b46ba9889d5b46ba2e65ddf9ab2ec, type: 3}
       propertyPath: internal_weapon_list.Array.data[3]
       value: 
-      objectReference: {fileID: 4204917738856348058, guid: 42cd6ced357799e48a9c1ff0f9f38add, type: 3}
+      objectReference: {fileID: 4204917738856348058, guid: 04a06f3ba2194a542abbc638e12d48aa, type: 3}
     - target: {fileID: 2344385606629588563, guid: 848b46ba9889d5b46ba2e65ddf9ab2ec, type: 3}
       propertyPath: internal_weapon_list.Array.data[4]
       value: 
@@ -18880,7 +18880,7 @@ PrefabInstance:
     - target: {fileID: 2344385606629588563, guid: 848b46ba9889d5b46ba2e65ddf9ab2ec, type: 3}
       propertyPath: internal_weapon_list.Array.data[5]
       value: 
-      objectReference: {fileID: 4801101531447809085, guid: eddb7bc7336ef264cae9b2d27aa3a56b, type: 3}
+      objectReference: {fileID: 4801101531447809085, guid: e7dc6523d6ca32f458c9c288329fd800, type: 3}
     - target: {fileID: 2344385606629588563, guid: 848b46ba9889d5b46ba2e65ddf9ab2ec, type: 3}
       propertyPath: internal_weapon_list.Array.data[6]
       value: 
@@ -19239,11 +19239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe595f4e002669479931c848031d8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1427912168 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5427638491620473858, guid: befbf12b7c394ef45997af80085e69bf, type: 3}
-  m_PrefabInstance: {fileID: 725350924}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1443412042
 PrefabInstance:
   m_ObjectHideFlags: 0

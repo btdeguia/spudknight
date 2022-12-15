@@ -219,7 +219,7 @@ public class UIController : Singleton<UIController>
         finalColor.a = 1;
         fade_bg.color = finalColor;
         Time.timeScale = 1f;
-        SceneManager.LoadScene("StartMenu");
+        Application.Quit();
     }
 
     public void GainCurrency(Vector3 pos) {
