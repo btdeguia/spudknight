@@ -9,6 +9,7 @@ public class BossRoomController : MonoBehaviour
     [SerializeField] private GameObject boss;
     [SerializeField] private Collider2D collider_2d;
     [SerializeField] private GameObject wall;
+    [SerializeField] private AudioClip audioClip;
     private bool spawned = false;
     private bool dead = false;
     private void Update()
@@ -37,6 +38,12 @@ public class BossRoomController : MonoBehaviour
     }
 
     private IEnumerator StartBossFight() {
+        AudioSource auid_source = Camera.main.GetComponent<AudioSource>();
+        if (auid_source != null)
+        {
+            auid_source.clip = audioClip;
+            auid_source.Play();
+        }
         yield return new WaitForSeconds(0.5f);
         UIController.Instance.ShowBossScreen();
         yield return new WaitForSecondsRealtime(5f);

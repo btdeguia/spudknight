@@ -3,7 +3,11 @@ guid: 24f9e484e43b02a49ac94220bfeba24d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - boss: {instanceID: 0}
+  - collider_2d: {instanceID: 0}
+  - wall: {instanceID: 0}
+  - audioClip: {fileID: 8300000, guid: 0f83add165f864e4baa329c8bfe1a606, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
