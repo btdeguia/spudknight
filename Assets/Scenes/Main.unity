@@ -5971,6 +5971,7 @@ MonoBehaviour:
   boss: {fileID: 455713377}
   collider_2d: {fileID: 886588819}
   wall: {fileID: 837435996}
+  audioClip: {fileID: 8300000, guid: 0f83add165f864e4baa329c8bfe1a606, type: 3}
 --- !u!1001 &890389525
 PrefabInstance:
   m_ObjectHideFlags: 0
